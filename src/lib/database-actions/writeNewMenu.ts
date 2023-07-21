@@ -78,6 +78,6 @@ export async function writeNewMenu(
     if (successful) {
         console.log("Successfully added new menu to the database!");
         alert("You have successfully created a new menu!");
-        location.href = `/user/${uid}`;
+        window.location.href = `/user/${uid}`;
     }
 }

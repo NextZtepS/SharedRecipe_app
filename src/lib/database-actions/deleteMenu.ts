@@ -9,6 +9,6 @@ export async function deleteMenu(menuId: string, uid: string) {
         console.log("Successfully deleted menu in the database!");
         alert("You have successfully deleted the menu!");
         console.error("Error writing to the database:", err);
-        location.href = `/user/${uid}`;
+        window.location.href = `/user/${uid}`;
     }
 }

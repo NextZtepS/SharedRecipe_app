@@ -11,6 +11,11 @@ export function handleTagString(tagString: string): string[] {
 }
 
 export function reverseTagString(tags: string[]): string {
-    if (tags.length >= 1) return "#" + tags.join(" #");
-    else return "";
+    if (tags) {
+        if (tags.length >= 1) {
+            return "#" + tags.join(" #");
+        } else {
+            return "";
+        }
+    } else return "";
 }

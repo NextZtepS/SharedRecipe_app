@@ -60,6 +60,6 @@ export async function writeMenu(
     if (successful) {
         console.log("Successfully edited menu in the database!");
         alert("You have successfully edited the menu!");
-        location.href = `/user/${menuId}`;
+        window.location.href = `/user/${uid}`;
     }
 }

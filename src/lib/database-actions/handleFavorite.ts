@@ -36,6 +36,6 @@ export async function handleRemoveFromFavorite(menuId: string, uid: string) {
     if (successful) {
         alert("You have removed this menu from your favorite!");
         console.log("Successfully removing menu from user's favorite!");
-        location.replace(location.href);
+        window.location.replace(location.href);
     }
 }
