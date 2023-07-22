@@ -1,6 +1,6 @@
 <script lang="ts">
     import { user } from "$lib/firebase";
-    import { handleExplore } from "$lib/database-actions/handleExplore";
+    import { updateView } from "$lib/database-actions/updateView";
 
     export let uid: string;
     export let menuId: string;
@@ -19,13 +19,17 @@
 <div class="card card-compact w-full h-full p-3 border-2 bg-base-100 shadow-xl">
     <div class="sm:flex items-center text-sm">
         {#if menuImg}
-            <!-- svelte-ignore a11y-img-redundant-alt -->
-            <img
-                class="object-cover w-52 p-2 mx-2"
-                src={menuImg}
-                loading="lazy"
-                alt=""
-            />
+            <a
+                href="/menu/{menuId}"
+                class="h-auto sm:w-3/5 p-2 mx-2"
+            >
+                <img
+                    class="object-cover h-96 sm:h-auto w-full my-auto"
+                    src={menuImg}
+                    loading="lazy"
+                    alt=""
+                />
+            </a>
         {/if}
 
         <div class="flex flex-auto items-center">
@@ -56,7 +60,7 @@
                     <a
                         href="/menu/{menuId}"
                         class="btn btn-primary"
-                        on:click={async () => handleExplore(menuId)}>explore</a
+                        on:click={async () => updateView(menuId)}>explore</a
                     >
                 {/if}
             </div>

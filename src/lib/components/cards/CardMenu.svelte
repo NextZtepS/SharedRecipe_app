@@ -25,7 +25,6 @@
     class="card card-compact w-full h-full p-4 sm:p-10 border-2 bg-base-100 shadow-xl"
 >
     <div class="flex items-center">
-        <!-- svelte-ignore a11y-img-redundant-alt -->
         {#if menuImg}
             <img
                 class="object-cover w-44 sm:w-56 lg:w-64 pr-2 mr-2"
@@ -34,6 +33,7 @@
                 alt=""
             />
         {/if}
+        
         <div class="mr-auto ml-2">
             <a href="/menu/{menuId}" class="card-title">{menuName}</a>
             <a href="/user/{uid}" class="card-normal block mb-1"

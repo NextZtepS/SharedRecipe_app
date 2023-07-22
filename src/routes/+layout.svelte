@@ -82,7 +82,7 @@
     </div>
 </div>
 
-<div class="p-2 sm:px-4 sm:py-6 lg:px-6 lg:py-8">
+<div class="p-4 sm:px-4 sm:py-6 lg:px-6 lg:py-8">
     <slot />
 </div>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { handleExplore } from "$lib/database-actions/handleExplore";
+    import { updateView } from "$lib/database-actions/updateView";
 
     export let uid: string;
     export let menuId: string;
@@ -18,23 +18,27 @@
 <div
     class="card card-compact w-full h-full border-2 bg-base-100 shadow-xl overflow-auto"
 >
-    <!-- svelte-ignore a11y-img-redundant-alt -->
     {#if menuImg}
-        <img
-            class="object-cover h-52 sm:h-1/2"
-            src={menuImg}
-            loading="lazy"
-            alt=""
-        />
+        <a
+            href="/menu/{menuId}"
+            class="h-96 md:h-3/5"
+        >
+            <img
+                class="object-cover h-full mx-auto"
+                src={menuImg}
+                loading="lazy"
+                alt=""
+            />
+        </a>
     {/if}
 
     <div class="card-body">
         <div class="flex items-center justify-between my-2">
             <div>
-                <a href="menu/{menuId}" class="card-title">{menuName}</a>
+                <a href="/menu/{menuId}" class="card-title">{menuName}</a>
                 <a href="/user/{uid}" class="card-normal block mb-1"
-                    >By {userName}</a
-                >
+                    >By {userName}
+                </a>
                 {#each tags as tag}
                     <h3 class="badge badge-ghost mr-0.5 mt-0.5">#{tag}</h3>
                 {/each}
@@ -59,7 +63,6 @@
         <a
             href="/menu/{menuId}"
             class="btn btn-primary"
-            on:click={async () => handleExplore(menuId)}
         >
             explore
         </a>

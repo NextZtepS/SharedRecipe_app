@@ -7,7 +7,7 @@ The key features on this application include:
 - rating the recipes that other users have shared
 - searching for any recipe that matches your interest
 
-# Technology
+## Technology
 
 SharedRecipe is the web application built on the Svelte and Firebase infrastructure. 
 Most of the codebase is implemented in Svelte and Typescripts.

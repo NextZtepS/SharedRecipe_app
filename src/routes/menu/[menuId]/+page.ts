@@ -1,11 +1,14 @@
 import { doc, getDoc } from 'firebase/firestore';
 import type { PageLoad } from './$types';
 import { db } from '$lib/firebase';
+import { updateView } from '$lib/database-actions/updateView';
 
 export const load = (async ({ params }) => {
     const menuId = params.menuId;
-    let menu;
+    
+    await updateView(menuId);
 
+    let menu;
     const docPath = doc(db, `menus/${menuId}`);
     const docSnapshot = await getDoc(docPath);
     if (docSnapshot.exists()) {

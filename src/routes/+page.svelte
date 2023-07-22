@@ -115,7 +115,7 @@
 </div>
 
 <div
-    class="grid py-6 px-8 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+    class="grid py-6 px-8 gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4"
 >
     {#if searched}
         {#each searchedMenus as menu}

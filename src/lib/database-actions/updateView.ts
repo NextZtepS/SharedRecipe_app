@@ -1,7 +1,7 @@
 import { db } from "$lib/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
-export async function handleExplore(menuId: string) {
+export async function updateView(menuId: string) {
     const docPath = doc(db, `menus/${menuId}`);
 
     const docSnapshot = await getDoc(docPath);
