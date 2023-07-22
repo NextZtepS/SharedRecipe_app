@@ -21,7 +21,7 @@
 
 <div class="navbar bg-primary p-8">
     <div class="navbar-start">
-        <a href="/" class="btn btn-ghost normal-case text-2xl lg:text-3xl" on:click={forceReload}>Recipe</a>
+        <a href="/" class="btn btn-ghost normal-case text-2xl lg:text-3xl" on:click={forceReload}>Shared•Recipe</a>
     </div>
 
     <div class="navbar-end">
@@ -97,11 +97,11 @@
             <a href="mailto:natdanaiongarjvaja@gmail.com">
                 <img alt="email" src="/icons/email.png" width="32" />
             </a>
-            <a href="https://github.com/NextZtepS">
+            <a href="https://github.com/NextZtepS/SharedRecipe-app">
                 <img alt="github" src="/icons/github.png" width="32" />
             </a>
             <a href="https://github.com/NextZtepS">
-                <img alt="github" src="/icons/user.png" width="32" />
+                <img alt="personal" src="/icons/user.png" width="32" />
             </a>
         </div>
     </div>

@@ -8,6 +8,9 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
 /.firebase
-/.firebaserc
-/firebase-debug.log
+.firebaserc
+firebase.json
+firestore.rules
+storage.rules
