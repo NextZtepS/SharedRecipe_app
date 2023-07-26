@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { updateView } from "$lib/database-actions/updateView";
-
     export let uid: string;
     export let menuId: string;
     export let menuImg: string;
@@ -48,11 +46,11 @@
                 class="text-center p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
             >
                 {#if avgRating}
-                    <h3 class="text-xl">{avgRating.toFixed(2)}</h3>
+                    <h3 class="text-xl text-neutral-100">{avgRating.toFixed(2)}</h3>
                 {:else}
-                    <h3 class="text-xl">-</h3>
+                    <h3 class="text-xl text-neutral-100">-</h3>
                 {/if}
-                <h2 class="text-xs">views: {views}</h2>
+                <h2 class="text-xs text-neutral-100">views: {views}</h2>
             </div>
         </div>
 

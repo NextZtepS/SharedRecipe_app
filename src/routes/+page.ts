@@ -1,4 +1,4 @@
-import { Query, collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import type { PageLoad } from './$types';
 import { db } from '$lib/firebase';
 

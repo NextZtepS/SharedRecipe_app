@@ -19,7 +19,7 @@
     }
 </script>
 
-<div class="navbar bg-primary p-8">
+<div class="navbar bg-primary p-8 text-neutral-100">
     <div class="navbar-start">
         <a href="/" class="btn btn-ghost normal-case text-2xl lg:text-3xl" on:click={forceReload}>Shared•Recipe</a>
     </div>
@@ -53,19 +53,19 @@
             >
                 {#if $user}
                     <li>
-                        <a href="/user/{$user.uid}" class="text-base">
+                        <a href="/user/{$user.uid}" class="text-lg text-neutral">
                             Your menu
                         </a>
                     </li>
                     <li>
-                        <a href="/user/your-favorite" class="text-base">
+                        <a href="/user/your-favorite" class="text-lg text-neutral">
                             Your favorite
                         </a>
                     </li>
                     <li>
                         <button
                             on:click={() => signOut(auth)}
-                            class="text-base"
+                            class="text-lg text-neutral"
                         >
                             Sign out
                         </button>
@@ -86,7 +86,7 @@
     <slot />
 </div>
 
-<footer class="footer footer-center p-8 bg-secondary text-primary-content">
+<footer class="footer footer-center p-8 bg-secondary text-neutral-100">
     <div>
         <p class="font-bold">
             created by NextZtepS <br />Developer, Harvey Mudd College '26

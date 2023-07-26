@@ -51,11 +51,11 @@
                 class="text-center w-max p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
             >
                 {#if avgRating}
-                    <h3 class="text-xl">{avgRating.toFixed(2)}</h3>
+                    <h3 class="text-xl text-neutral-100">{avgRating.toFixed(2)}</h3>
                 {:else}
-                    <h3 class="text-xl">-</h3>
+                    <h3 class="text-xl text-neutral-100">-</h3>
                 {/if}
-                <h3 class="text-xs">views: {views}</h3>
+                <h3 class="text-xs text-neutral-100">views: {views}</h3>
             </div>
             {#if $user}
                 {#if favoritedBy.includes($user.uid)}

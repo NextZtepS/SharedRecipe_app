@@ -1,6 +1,5 @@
 <script lang="ts">
     import { user } from "$lib/firebase";
-    import { updateView } from "$lib/database-actions/updateView";
 
     export let uid: string;
     export let menuId: string;
@@ -19,10 +18,7 @@
 <div class="card card-compact w-full h-full p-3 border-2 bg-base-100 shadow-xl">
     <div class="sm:flex items-center text-sm">
         {#if menuImg}
-            <a
-                href="/menu/{menuId}"
-                class="h-auto sm:w-3/5 p-2 mx-2"
-            >
+            <a href="/menu/{menuId}" class="h-auto sm:w-3/5 p-2 mx-2">
                 <img
                     class="object-cover h-96 sm:h-auto w-full my-auto"
                     src={menuImg}
@@ -46,22 +42,20 @@
                     class="text-center w-max p-3 mx-auto rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
                 >
                     {#if avgRating}
-                        <h3 class="text-xl">{avgRating.toFixed(2)}</h3>
+                        <h3 class="text-xl text-neutral-100">{avgRating.toFixed(2)}</h3>
                     {:else}
-                        <h3 class="text-xl">-</h3>
+                        <h3 class="text-xl text-neutral-100">-</h3>
                     {/if}
-                    <h2 class="text-xs">views: {views}</h2>
+                    <h2 class="text-xs text-neutral-100">views: {views}</h2>
                 </div>
                 {#if $user?.uid == uid}
-                    <a href="/menu/edit/{menuId}" class="btn btn-primary"
-                        >edit</a
-                    >
+                    <a href="/menu/edit/{menuId}" class="btn btn-primary">
+                        edit
+                    </a>
                 {:else}
-                    <a
-                        href="/menu/{menuId}"
-                        class="btn btn-primary"
-                        on:click={async () => updateView(menuId)}>explore</a
-                    >
+                    <a href="/menu/{menuId}" class="btn btn-primary">
+                        explore
+                    </a>
                 {/if}
             </div>
         </div>

@@ -70,6 +70,13 @@
         lastSearchDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
     }
 
+    async function handleKeypress(e: KeyboardEvent) {
+        let keyPressed = e.key;
+        if (keyPressed === "Enter") {
+            handleSearch();
+        }
+    }
+
     async function loadMoreSearchedMenu() {
         if (!searchKey) searchKey = " ";
         const menusQuery = query(
@@ -98,15 +105,16 @@
 </script>
 
 <div class="flex justify-center sm:mb-2 mt-3 sm:mt-2">
-    <div class="bg-accent p-2.5 rounded-full flex justify-center sm:w-3/5">
+    <div class="bg-accent p-2.5 rounded-xl flex justify-center sm:w-3/5">
         <input
             type="text"
             placeholder="Menu / User / Tag"
             class="input input-bordered w-44 sm:w-auto flex-grow"
             bind:value={searchKey}
+            on:keydown={handleKeypress}
         />
         <button
-            class="btn btn-neutral ml-1.5"
+            class="btn btn-neutral ml-1.5 text-base-200"
             on:click|preventDefault={handleSearch}
         >
             Search
