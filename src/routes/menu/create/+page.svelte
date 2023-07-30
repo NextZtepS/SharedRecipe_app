@@ -17,6 +17,7 @@
     // the 2 variables below must be initialized to prevent the interactive fields from failing
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};
+    let visibility: "public" | "private" = "public";
 </script>
 
 <AuthCheck>
@@ -76,6 +77,7 @@
             <div class="form-control mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">Ingredient</label>
+
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <div class="px-2 mb-2">
                     <label class="inline-flex text-sm">
@@ -88,6 +90,7 @@
                         bind:value={numIngredient}
                     />
                 </div>
+
                 <div
                     class="grid gap-1.5 px-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
                 >
@@ -119,6 +122,7 @@
                         bind:value={numProcedure}
                     />
                 </div>
+
                 {#each Array(numProcedure) as _, index}
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="inline-flex text-sm mt-3 mb-1 ml-3">
@@ -132,8 +136,21 @@
                 {/each}
             </div>
 
+            <div class="flex align-middle px-2 mt-3">
+                <!-- svelte-ignore a11y-label-has-associated-control -->
+                <label class="inline-flex text-md mt-1">
+                    Please choose your menu's visibility
+                </label>
+                <select 
+                    class="select select-bordered select-sm max-w-xs inline-flex w-32 h-8 ml-2"
+                    bind:value={visibility}>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </div>
+
             <button
-                class="form-control btn btn-success mx-auto mt-6"
+                class="form-control btn btn-success mx-auto mt-8"
                 on:click|preventDefault={async () =>
                     writeNewMenu(
                         Img,
@@ -143,7 +160,8 @@
                         tagString,
                         about,
                         ingredients,
-                        precedures
+                        precedures,
+                        visibility
                     )}
             >
                 publish

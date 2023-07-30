@@ -1,10 +1,11 @@
-import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
-import type { PageLoad } from './$types';
+import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { db } from '$lib/firebase';
+import type { PageLoad } from './$types';
 
 export const load = (async () => {
     const menusQuery = query(
         collection(db, "menus"),
+        where("visibility", "==", "public"),
         orderBy("lastestEdited", "desc"),
         limit(24),
     );

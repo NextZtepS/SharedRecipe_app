@@ -1,5 +1,6 @@
 <script lang="ts">
     import CardHome from "$lib/components/cards/CardHome.svelte";
+    import GridPrimary from "$lib/components/utils/GridPrimary.svelte";
     import {
         collection,
         getDocs,
@@ -9,8 +10,8 @@
         startAfter,
         where,
     } from "firebase/firestore";
-    import type { PageData } from "./$types";
     import { db } from "$lib/firebase";
+    import type { PageData } from "./$types";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
@@ -18,6 +19,7 @@
     async function loadMoreHomeMenu() {
         const menusQuery = query(
             collection(db, "menus"),
+            where("visibility", "==", "public"),
             orderBy("lastestEdited", "desc"),
             startAfter(lastDoc),
             limit(12)
@@ -49,7 +51,12 @@
         searchedMenus = [];
         const menusQuery = query(
             collection(db, "menus"),
-            where("keywords", "array-contains", searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()),
+            where("visibility", "==", "public"),
+            where(
+                "keywords",
+                "array-contains",
+                searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
+            ),
             orderBy("lastestEdited", "desc"),
             limit(24)
         );
@@ -81,7 +88,12 @@
         if (!searchKey) searchKey = " ";
         const menusQuery = query(
             collection(db, "menus"),
-            where("keywords", "array-contains", searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()),
+            where("visibility", "==", "public"),
+            where(
+                "keywords",
+                "array-contains",
+                searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
+            ),
             orderBy("lastestEdited", "desc"),
             startAfter(lastDoc),
             limit(12)
@@ -104,8 +116,8 @@
     }
 </script>
 
-<div class="flex justify-center sm:mb-2 mt-3 sm:mt-2">
-    <div class="bg-accent p-2.5 rounded-xl flex justify-center sm:w-3/5">
+<div class="flex justify-center">
+    <div class="flex justify-center p-2.5 rounded-xl sm:w-3/5 bg-accent">
         <input
             type="text"
             placeholder="Menu / User / Tag"
@@ -122,9 +134,7 @@
     </div>
 </div>
 
-<div
-    class="grid py-6 px-8 gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4"
->
+<GridPrimary>
     {#if searched}
         {#each searchedMenus as menu}
             <CardHome
@@ -154,18 +164,18 @@
             />
         {/each}
     {/if}
-</div>
+</GridPrimary>
 
 {#if searched}
     <button
-        class="btn btn-accent flex mx-auto w-48 md:w-72 my-4"
+        class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
         on:click|preventDefault={loadMoreSearchedMenu}
     >
         Load More Result
     </button>
 {:else}
     <button
-        class="btn btn-accent flex mx-auto w-48 md:w-72 my-4"
+        class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
         on:click|preventDefault={loadMoreHomeMenu}
     >
         Load More Menu

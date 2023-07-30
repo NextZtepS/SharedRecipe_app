@@ -1,9 +1,20 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import type { PageLoad } from './$types';
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '$lib/firebase';
+import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
     const uid = params.uid;
+
+    const docPath = doc(db, `users/${uid}`);
+    const docSnapshot = await getDoc(docPath);
+
+    let author;
+    if (docSnapshot.exists()) {
+        author = docSnapshot.data();
+        console.log("Successfully reading author from the database!");
+    } else {
+        console.log("No author found!");
+    }
 
     const menusQuery = query(
         collection(db, "menus"),
@@ -24,7 +35,7 @@ export const load = (async ({ params }) => {
     })
 
     return {
-        uid: uid,
+        author: author,
         menus: menus
     };
 }) satisfies PageLoad;

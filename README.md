@@ -5,7 +5,16 @@ The key features on this application include:
 - building personal profile that can be visited by other users
 - creating & editing blog-post-like recipes that can be shared with other users
 - rating the recipes that other users have shared
-- searching for any recipe that matches your interest
+- searching for any recipe that might suit your interest
+- enjoying an immersive UI experience both on mobile and desktop
+
+### Latest release
+- more visibility control of your menu
+- better reactive UI for mobile devices
+- secure validations on multiple site actions
+
+### Upcoming release
+- more secure image sizing regulation
 
 ## Technology
 

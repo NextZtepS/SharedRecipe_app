@@ -1,7 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore';
-import type { PageLoad } from './$types';
 import { db } from '$lib/firebase';
 import { updateView } from '$lib/database-actions/updateView';
+import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
     const menuId = params.menuId;

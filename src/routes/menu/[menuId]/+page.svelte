@@ -9,27 +9,32 @@
 
 <div class="p-6 md:px-8">
     {#if menu}
-        <CardMenu
-            uid={menu.uid}
-            menuId={menu.menuId}
-            menuImg={menu.menuImg}
-            menuName={menu.menuName}
-            userName={menu.userName}
-            tags={menu.tags}
-            avgRating={menu.avgRating}
-            views={menu.views}
-            about={menu.about}
-            ingredients={menu.ingredients}
-            procedures={menu.procedures}
-            favoritedBy={menu.favoritedBy}
-            givenRating={menu.ratings[$user?.uid ?? ""]}
-        />
+        {#if menu.visibility === "public"}
+            <CardMenu
+                uid={menu.uid}
+                menuId={menu.menuId}
+                menuImg={menu.menuImg}
+                menuName={menu.menuName}
+                userName={menu.userName}
+                tags={menu.tags}
+                avgRating={menu.avgRating}
+                views={menu.views}
+                about={menu.about}
+                ingredients={menu.ingredients}
+                procedures={menu.procedures}
+                favoritedBy={menu.favoritedBy}
+                givenRating={menu.ratings[$user?.uid ?? ""]}
+            />
+        {:else}
+            <div class="alert-warning text-center">
+                <p class="text-warning text-xl m-6">This menu is set to private!</p>
+                <a class="btn btn-warning mb-6" href="/">Return to Homepage</a>
+            </div>
+        {/if}
     {:else}
-    <div class="alert-error text-center">
-        <p class="text-error text-xl m-6">
-            Cannot find the menu!
-        </p>
-        <a class="btn btn-error mb-6" href="/">Return to Homepage</a>
-    </div>
+        <div class="alert-error text-center">
+            <p class="text-error text-xl m-6">Cannot find the menu!</p>
+            <a class="btn btn-error mb-6" href="/">Return to Homepage</a>
+        </div>
     {/if}
 </div>

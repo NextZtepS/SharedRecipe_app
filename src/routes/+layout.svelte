@@ -1,8 +1,12 @@
 <script lang="ts">
     import "../app.css";
     import { auth, user } from "$lib/firebase";
+    import {
+        GoogleAuthProvider,
+        signInWithPopup,
+        signOut,
+    } from "firebase/auth";
     import { writeUser } from "$lib/database-actions/writeUser";
-    import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
     async function signInWithGoogle() {
         const provider = new GoogleAuthProvider();
@@ -19,33 +23,45 @@
     }
 </script>
 
-<div class="navbar bg-primary p-8 text-neutral-100">
+<div class="navbar bg-primary p-4 lg:p-8 mb-6 text-neutral-100">
     <div class="navbar-start">
-        <a href="/" class="btn btn-ghost normal-case text-2xl lg:text-3xl" on:click={forceReload}>Shared•Recipe</a>
+        <a
+            href="/"
+            class="btn btn-ghost normal-case text-2xl lg:text-3xl"
+            on:click={forceReload}>Shared•Recipe</a
+        >
     </div>
 
     <div class="navbar-end">
         {#if $user}
-            <h1 class="text-right text-base lg:text-lg my-auto mr-2 md:mr-3 lg:mr-4">{$user?.displayName}</h1>
+            <h1
+                class="text-right text-base lg:text-lg my-auto mr-2 md:mr-3 lg:mr-4"
+            >
+                {$user?.displayName}
+            </h1>
+        {:else}
+            <button
+                on:click={signInWithGoogle}
+                class="btn-ghost p-3 rounded-lg text-lg font-semibold mr-2 md:mr-3 lg:mr-4"
+            >
+                Sign in
+            </button>
         {/if}
         <div class="dropdown dropdown-end">
-            <!-- svelte-ignore a11y-label-has-associated-control -->
-            <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar top-1">
-                {#if $user}
+            {#if $user}
+                <!-- svelte-ignore a11y-label-has-associated-control -->
+                <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+                <label
+                    tabindex="0"
+                    class="btn btn-ghost btn-circle avatar mt-0.5"
+                >
                     <img
                         class="rounded-full"
                         src={$user.photoURL}
                         alt={$user.displayName?.substring(0, 1)}
                     />
-                {:else}
-                    <img
-                        class="rounded-full opacity-80"
-                        src="/icons/user.png"
-                        alt="Profile"
-                    />
-                {/if}
-            </label>
+                </label>
+            {/if}
             <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
             <ul
                 tabindex="0"
@@ -53,12 +69,18 @@
             >
                 {#if $user}
                     <li>
-                        <a href="/user/{$user.uid}" class="text-lg text-neutral">
+                        <a
+                            href="/user/{$user.uid}"
+                            class="text-lg text-neutral"
+                        >
                             Your menu
                         </a>
                     </li>
                     <li>
-                        <a href="/user/your-favorite" class="text-lg text-neutral">
+                        <a
+                            href="/user/your-favorite"
+                            class="text-lg text-neutral"
+                        >
                             Your favorite
                         </a>
                     </li>
@@ -72,7 +94,10 @@
                     </li>
                 {:else}
                     <li>
-                        <button on:click={signInWithGoogle} class="text-lg text-neutral">
+                        <button
+                            on:click={signInWithGoogle}
+                            class="text-lg text-neutral"
+                        >
                             Sign in
                         </button>
                     </li>
@@ -82,11 +107,11 @@
     </div>
 </div>
 
-<div class="p-4 sm:px-4 sm:py-6 lg:px-6 lg:py-8">
+<div class="p-2 md:p-4">
     <slot />
 </div>
 
-<footer class="footer footer-center p-8 bg-secondary text-neutral-100">
+<footer class="footer footer-center p-10 mt-6 bg-secondary text-neutral-100">
     <div>
         <p class="font-bold">
             created by NextZtepS <br />Developer, Harvey Mudd College '26

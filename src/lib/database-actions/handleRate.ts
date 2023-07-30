@@ -7,8 +7,13 @@ export async function handleRate(
     givenRating: number | null,
 ) {
     let successful = true;
-    const docPath = doc(db, `menus/${menuId}`);
 
+    if (!givenRating || givenRating < 0 || givenRating > 10) {
+        alert("Please input a valid rating from 0 to 10!");
+        return;
+    }
+
+    const docPath = doc(db, `menus/${menuId}`);
     let docData = {
         [`ratings.${uid}`]: givenRating,
     };

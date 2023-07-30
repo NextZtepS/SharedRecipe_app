@@ -1,6 +1,6 @@
 import { db, storage } from "$lib/firebase";
 import { addDoc, collection, serverTimestamp, setDoc } from "firebase/firestore";
-import { handleTagString } from "../utils/tags";
+import { handleTagString, reverseTagString } from "../utils/tags";
 import { createKeywords } from "../utils/createKeywords";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
@@ -13,11 +13,15 @@ export async function writeNewMenu(
     about: string,
     ingredients: { [key: number]: string },
     precedures: { [key: number]: string },
+    visibility: "public" | "private"
 ) {
-
     let successful = true;
+
     if (!menuName) {
         alert("You must provide a menu name!");
+        return;
+    } else if (tagString !== reverseTagString(handleTagString(tagString))) {
+        alert("You have put in an invalid format for the Tag field!")
         return;
     }
 
@@ -41,8 +45,9 @@ export async function writeNewMenu(
             userName ?? "",
             handleTagString(tagString)
         ),
+        visibility: visibility,
     };
-
+    
     let docRef;
     try {
         docRef = await addDoc(colPath, docData);

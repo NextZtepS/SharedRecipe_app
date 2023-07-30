@@ -5,8 +5,10 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 export const load = (async () => {
     const menusQuery = query(
         collection(db, "menus"),
+        where("visibility", "==", "public"),
         where("favoritedBy", "array-contains", auth.currentUser?.uid)
     );
+    
     let querySnapshot;
     try {
         console.log("Successfully reading user's favorite menus from the database!");

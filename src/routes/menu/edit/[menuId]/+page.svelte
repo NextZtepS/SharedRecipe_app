@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { PageData } from "./$types";
     import { user } from "$lib/firebase";
     import { reverseTagString } from "$lib/utils/tags";
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
+    import type { PageData } from "./$types";
 
     export let data: PageData;
     const { menu } = data;
@@ -27,6 +27,7 @@
     let numProcedure: string | number = Object.keys(procedures).slice(-1)[0];
     if (numProcedure) numProcedure = +numProcedure;
     else numProcedure = 1;
+    let visibility: "public" | "private" = menu?.visibility;
 </script>
 
 {#if menu?.uid === $user?.uid}
@@ -86,6 +87,7 @@
             <div class="form-control mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">Ingrediant</label>
+
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <div class="px-2 mb-2">
                     <label class="inline-flex text-sm">
@@ -98,6 +100,7 @@
                         bind:value={numIngredient}
                     />
                 </div>
+
                 <div
                     class="grid gap-1.5 px-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
                 >
@@ -129,6 +132,7 @@
                         bind:value={numProcedure}
                     />
                 </div>
+
                 {#each Array(numProcedure) as _, index}
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="inline-flex text-sm mt-3 mb-1 ml-3">
@@ -142,8 +146,21 @@
                 {/each}
             </div>
 
+            <div class="flex align-middle px-2 mt-3">
+                <!-- svelte-ignore a11y-label-has-associated-control -->
+                <label class="inline-flex text-md mt-1">
+                    Please choose your menu's visibility
+                </label>
+                <select 
+                    class="select select-bordered select-sm max-w-xs inline-flex w-32 h-8 ml-2"
+                    bind:value={visibility}>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </div>
+
             <button
-                class="form-control btn btn-success mx-auto mt-6"
+                class="form-control btn btn-success mx-auto mt-8"
                 on:click|preventDefault={async () =>
                     writeMenu(
                         previewURL,
@@ -155,7 +172,8 @@
                         tagString,
                         about,
                         ingredients,
-                        procedures
+                        procedures,
+                        visibility
                     )}
             >
                 save
