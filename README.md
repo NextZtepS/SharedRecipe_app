@@ -8,12 +8,12 @@ The key features on this application include:
 - searching for any recipe that might suit your interest
 - enjoying an immersive UI experience both on mobile and desktop
 
-### Latest release
+### Latest release (1.0.1)
 - more visibility control of your menu
 - better reactive UI for mobile devices
 - secure validations on multiple site actions
 
-### Upcoming release
+### Upcoming release (1.0.2)
 - more secure image sizing regulation
 
 ## Technology

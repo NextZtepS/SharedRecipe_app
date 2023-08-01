@@ -1,8 +1,17 @@
 {
 	"name": "recipe-app",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"private": true,
 	"type": "module",
+	"author": {
+		"name": "Next Ongarjvaja",
+		"email": "natdanaiongarjvaja@gmail.com"
+	},
+	"contributors": [
+		{
+			"name": "Betsy Wu"
+		}
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
