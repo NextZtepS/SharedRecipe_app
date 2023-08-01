@@ -12,7 +12,7 @@
     } from "firebase/firestore";
     import { db } from "$lib/firebase";
     import type { PageData } from "./$types";
-    import type { menu } from "$lib/model/menu";
+    import type { menu } from "$lib/interfaces/menu";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
