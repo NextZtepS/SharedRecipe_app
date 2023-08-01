@@ -8,7 +8,7 @@ export async function writeUser(user: User) {
         uid: user.uid,
         name: user.displayName ?? "annonymous",
         email: user.email,
-        photoURL: user.photoURL,
+        photoURL: user.photoURL ?? "",
         lastestSignIn: serverTimestamp(),
     };
     try {

@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 import { auth, db } from '$lib/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import type { menu } from '$lib/model/menu';
 
 export const load = (async () => {
     const menusQuery = query(
@@ -17,9 +18,9 @@ export const load = (async () => {
         console.error("Error reading from the database:", err);
     }
 
-    let menus: any[] = [];
+    let menus: menu[] = [];
     querySnapshot?.forEach((doc) => {
-        menus.push(doc.data());
+        menus.push(doc.data() as menu);
     })
 
     return {

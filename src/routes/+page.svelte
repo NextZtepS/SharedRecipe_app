@@ -12,6 +12,7 @@
     } from "firebase/firestore";
     import { db } from "$lib/firebase";
     import type { PageData } from "./$types";
+    import type { menu } from "$lib/model/menu";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
@@ -36,14 +37,14 @@
         }
 
         querySnapshot?.forEach((doc) => {
-            menus = [...menus, doc.data()];
+            menus = [...menus, doc.data() as menu];
         });
         lastDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
     }
 
     let searchKey: string;
     let searched: boolean = false;
-    let searchedMenus: any[] = [];
+    let searchedMenus: menu[] = [];
     let lastSearchDoc;
 
     async function handleSearch() {
@@ -72,7 +73,7 @@
         }
 
         querySnapshot?.forEach((doc) => {
-            searchedMenus = [...searchedMenus, doc.data()];
+            searchedMenus = [...searchedMenus, doc.data() as menu];
         });
         lastSearchDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
     }
@@ -110,7 +111,7 @@
         }
 
         querySnapshot?.forEach((doc) => {
-            searchedMenus = [...searchedMenus, doc.data()];
+            searchedMenus = [...searchedMenus, doc.data() as menu];
         });
         lastSearchDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
     }

@@ -1,6 +1,7 @@
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import type { PageLoad } from './$types';
+import type { menu } from '$lib/model/menu';
 
 export const load = (async () => {
     const menusQuery = query(
@@ -18,9 +19,9 @@ export const load = (async () => {
         console.error("Error reading from the database:", err);
     }
 
-    let menus: any[] = [];
+    let menus: menu[] = [];
     querySnapshot?.forEach((doc) => {
-        menus = [...menus, doc.data()];
+        menus = [...menus, doc.data() as menu];
     })
     let lastDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
 

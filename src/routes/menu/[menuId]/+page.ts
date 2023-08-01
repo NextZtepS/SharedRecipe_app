@@ -2,17 +2,18 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { updateView } from '$lib/database-actions/updateView';
 import type { PageLoad } from './$types';
+import type { menu } from '$lib/model/menu';
 
 export const load = (async ({ params }) => {
     const menuId = params.menuId;
     
     await updateView(menuId);
 
-    let menu;
+    let menu: menu | undefined;
     const docPath = doc(db, `menus/${menuId}`);
     const docSnapshot = await getDoc(docPath);
     if (docSnapshot.exists()) {
-        menu = docSnapshot.data();
+        menu = docSnapshot.data() as menu;
         console.log("Successfully reading menu from the database!");
     } else {
         console.log("No document found!");

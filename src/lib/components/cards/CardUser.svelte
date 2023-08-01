@@ -7,7 +7,7 @@
     export let menuName: string;
     export const userName = "";
     export let tags: string[];
-    export let avgRating: number;
+    export let avgRating: number | undefined;
     export let views: number;
     export let about: string;
     export const ingredients = {};

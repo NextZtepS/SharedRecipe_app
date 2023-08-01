@@ -17,7 +17,7 @@
     let previewURL = menu?.menuImg;
     let menuName = menu?.menuName;
     let menuId = menu?.menuId;
-    let tagString = reverseTagString(menu?.tags);
+    let tagString = reverseTagString(menu?.tags ?? []);
     let about = menu?.about;
     let ingredients = menu?.ingredients ?? {};
     let numIngredient: string | number = Object.keys(ingredients).slice(-1)[0];
@@ -27,7 +27,7 @@
     let numProcedure: string | number = Object.keys(procedures).slice(-1)[0];
     if (numProcedure) numProcedure = +numProcedure;
     else numProcedure = 1;
-    let visibility: "public" | "private" = menu?.visibility;
+    let visibility: "public" | "private" = menu?.visibility ?? "private";
 </script>
 
 {#if menu?.uid === $user?.uid}
@@ -163,14 +163,14 @@
                 class="form-control btn btn-success mx-auto mt-8"
                 on:click|preventDefault={async () =>
                     writeMenu(
-                        previewURL,
+                        previewURL ?? "",
                         Img,
-                        menuName,
-                        menuId,
+                        menuName ?? "",
+                        menuId ?? "",
                         $user?.displayName ?? "",
                         $user?.uid ?? "",
                         tagString,
-                        about,
+                        about ?? "",
                         ingredients,
                         procedures,
                         visibility
@@ -181,7 +181,7 @@
             <button
                 class="form-control btn btn-error mx-auto mt-6"
                 on:click|preventDefault={async () =>
-                    deleteMenu(menuId, $user?.uid ?? "")}
+                    deleteMenu(menuId ?? "", $user?.uid ?? "")}
             >
                 delete
             </button>

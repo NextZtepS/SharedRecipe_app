@@ -12,7 +12,7 @@
     export let menuName: string;
     export let userName: string;
     export let tags: string[] = [];
-    export let avgRating: number;
+    export let avgRating: number | undefined;
     export let views: number;
     export let about: string = "";
     export let ingredients: { [key: number]: string } = {};

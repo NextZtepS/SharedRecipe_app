@@ -36,7 +36,7 @@ export async function writeNewMenu(
         ingredients: ingredients ?? {},
         precedures: precedures ?? {},
         lastestEdited: serverTimestamp(),
-        avgRating: null,
+        avgRating: undefined,
         ratings: {},
         views: 0,
         favoritedBy: [],
