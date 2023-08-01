@@ -12,6 +12,4 @@ vite.config.ts.timestamp-*
 /.firebase
 .firebaserc
 firebase.json
-firestore.rules
-storage.rules
 firebase-debug.log
