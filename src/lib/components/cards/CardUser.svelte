@@ -7,7 +7,7 @@
     export let menuName: string;
     export const userName = "";
     export let tags: string[];
-    export let avgRating: number | undefined;
+    export let avgRating: number | null;
     export let views: number;
     export let about: string;
     export const ingredients = {};
@@ -30,11 +30,13 @@
 
         <div class="flex flex-auto items-center">
             <div class="mx-2">
-                <h2 class="card-title">{menuName}</h2>
+                <h2 class="card-title text-2xl">{menuName}</h2>
                 {#each tags as tag}
-                    <h3 class="badge badge-ghost mr-0.5 mt-0.5">#{tag}</h3>
+                    <h3 class="badge badge-ghost text-lg p-2 mr-1 mt-1">
+                        #{tag}
+                    </h3>
                 {/each}
-                <p class="text-xs mt-2">{about.substring(0, 300) ?? ""}</p>
+                <p class="text-base mt-2">{about.substring(0, 300) ?? ""}</p>
             </div>
 
             <div class="flex flex-col space-y-5 p-2 ml-auto my-2 text-center">
@@ -42,11 +44,13 @@
                     class="text-center w-max p-3 mx-auto rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
                 >
                     {#if avgRating}
-                        <h3 class="text-xl text-neutral-100">{avgRating.toFixed(2)}</h3>
+                        <h3 class="text-2xl text-neutral-100">
+                            {avgRating.toFixed(2)}
+                        </h3>
                     {:else}
-                        <h3 class="text-xl text-neutral-100">-</h3>
+                        <h3 class="text-2xl text-neutral-100">-</h3>
                     {/if}
-                    <h2 class="text-xs text-neutral-100">views: {views}</h2>
+                    <h2 class="text-base text-neutral-100">views: {views}</h2>
                 </div>
                 {#if $user?.uid == uid}
                     <a href="/menu/edit/{menuId}" class="btn btn-primary">

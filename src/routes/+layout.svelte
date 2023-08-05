@@ -23,13 +23,14 @@
     }
 </script>
 
-<div class="navbar bg-primary p-4 lg:p-8 mb-6 text-neutral-100">
+<div class="navbar bg-primary p-8 mb-6 text-neutral-100">
     <div class="navbar-start">
         <a
             href="/"
-            class="btn btn-ghost normal-case text-2xl lg:text-3xl"
-            on:click={forceReload}>Shared•Recipe</a
-        >
+            class="btn btn-ghost normal-case text-3xl"
+            on:click={forceReload}
+            >SharedRecipe
+        </a>
     </div>
 
     <div class="navbar-end">
@@ -42,7 +43,7 @@
         {:else}
             <button
                 on:click={signInWithGoogle}
-                class="btn-ghost p-3 rounded-lg text-lg font-semibold mr-2 md:mr-3 lg:mr-4"
+                class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4"
             >
                 Sign in
             </button>

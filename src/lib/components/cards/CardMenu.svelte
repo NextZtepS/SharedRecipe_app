@@ -12,7 +12,7 @@
     export let menuName: string;
     export let userName: string;
     export let tags: string[] = [];
-    export let avgRating: number | undefined;
+    export let avgRating: number | null;
     export let views: number;
     export let about: string = "";
     export let ingredients: { [key: number]: string } = {};
@@ -33,14 +33,14 @@
                 alt=""
             />
         {/if}
-        
+
         <div class="mr-auto ml-2">
-            <a href="/menu/{menuId}" class="card-title">{menuName}</a>
-            <a href="/user/{uid}" class="card-normal block mb-1"
+            <a href="/menu/{menuId}" class="card-title text-2xl">{menuName}</a>
+            <a href="/user/{uid}" class="card-normal text-xl block mb-1"
                 >By {userName}</a
             >
             {#each tags as tag}
-                <h3 class="badge badge-ghost mr-0.5 mt-0.5">#{tag}</h3>
+                <h3 class="badge badge-ghost text-lg p-2 mr-1 mt-1">#{tag}</h3>
             {/each}
         </div>
 
@@ -51,11 +51,13 @@
                 class="text-center w-max p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
             >
                 {#if avgRating}
-                    <h3 class="text-xl text-neutral-100">{avgRating.toFixed(2)}</h3>
+                    <h3 class="text-2xl text-neutral-100">
+                        {avgRating.toFixed(2)}
+                    </h3>
                 {:else}
-                    <h3 class="text-xl text-neutral-100">-</h3>
+                    <h3 class="text-2xl text-neutral-100">-</h3>
                 {/if}
-                <h3 class="text-xs text-neutral-100">views: {views}</h3>
+                <h3 class="text-base text-neutral-100">views: {views}</h3>
             </div>
             {#if $user}
                 {#if favoritedBy.includes($user.uid)}
@@ -80,22 +82,22 @@
     </div>
 
     <div class="card-body">
-        <h2 class="card-title mt-2">About</h2>
-        <p class="card-normal">{about.substring(0, 300)}</p>
+        <h2 class="card-title text-2xl mt-4 mb-2">About</h2>
+        <p class="card-normal text-lg">{about.substring(0, 300)}</p>
 
-        <h2 class="card-title mt-2">Ingredient</h2>
+        <h2 class="card-title text-2xl mt-2">Ingredient</h2>
         <div
             class="grid gap-1.5 px-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
         >
             {#each Object.entries(ingredients) as [key, ingredient]}
-                <li>{ingredient}</li>
+                <li class="text-lg">{ingredient}</li>
             {/each}
         </div>
 
-        <h2 class="card-title mt-4">Procedure</h2>
+        <h2 class="card-title text-2xl mt-4">Procedure</h2>
         <ul>
             {#each Object.entries(procedures) as [key, procedure]}
-                <li class="mb-3">{key}) {procedure}</li>
+                <li class="text-lg mb-3">{key}) {procedure}</li>
             {/each}
         </ul>
     </div>
@@ -117,7 +119,7 @@
                 rate
             </button>
         </div>
-        <h2 class="text-sm text-center p-4">
+        <h2 class="text-base text-center p-4">
             Please help us rate this menu from 0 to 10
         </h2>
     {/if}

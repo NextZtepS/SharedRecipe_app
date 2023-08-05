@@ -11,9 +11,9 @@
         previewURL = URL.createObjectURL(Img[0]);
     }
 
-    let menuName: string;
-    let tagString: string;
-    let about: string;
+    let menuName: string = "";
+    let tagString: string = "";
+    let about: string = "";
     // the 2 variables below must be initialized to prevent the interactive fields from failing
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};

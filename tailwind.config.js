@@ -10,8 +10,6 @@ export default {
         themes: [
             "light",
             "dark",
-            "pastel",
-            "wireframe",
             {
                 default: {
                     "primary": "#617A55",

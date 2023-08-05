@@ -20,7 +20,7 @@ export async function writeNewMenu(
     if (!menuName) {
         alert("You must provide a menu name!");
         return;
-    } else if (tagString !== reverseTagString(handleTagString(tagString))) {
+    } else if (tagString != reverseTagString(handleTagString(tagString))) {
         alert("You have put in an invalid format for the Tag field!")
         return;
     }
@@ -36,7 +36,7 @@ export async function writeNewMenu(
         ingredients: ingredients ?? {},
         precedures: precedures ?? {},
         lastestEdited: serverTimestamp(),
-        avgRating: undefined,
+        avgRating: null,
         ratings: {},
         views: 0,
         favoritedBy: [],

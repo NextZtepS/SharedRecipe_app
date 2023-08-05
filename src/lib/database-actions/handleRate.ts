@@ -34,7 +34,7 @@ export async function handleRate(
 
     let avgRating: number | null;
     if (menu) {
-        const ratings: number[] = Object.values(menu?.ratings);
+        const ratings: number[] = Object.values(menu.ratings);
         let ratingSum = 0;
         for (let rating of ratings) {
             ratingSum += rating;

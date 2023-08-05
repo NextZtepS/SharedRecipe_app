@@ -13,7 +13,7 @@ export interface menu {
     procedures: { [key: number]: string },
     visibility: "public" | "private",
     ratings: { [key: string]: number },
-    avgRating?: number,
+    avgRating: number | null,
     views: number,
     favoritedBy: string[],
     lastestEdited: Timestamp
