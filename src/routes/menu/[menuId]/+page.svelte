@@ -27,7 +27,7 @@
             />
         {:else}
             <div class="alert-warning text-center">
-                <p class="text-warning text-xl m-6">This menu is set to private!</p>
+                <p class="text-warning text-xl m-6">This menu is private!</p>
                 <a class="btn btn-warning mb-6" href="/">Return to Homepage</a>
             </div>
         {/if}

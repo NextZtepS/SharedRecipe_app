@@ -3,7 +3,7 @@ import type { Timestamp } from "firebase/firestore";
 export interface menu {
     menuId: string,
     menuName: string,
-    menuImg: string,
+    menuImg: string | null,
     uid: string,
     userName: string,
     tags: string[],

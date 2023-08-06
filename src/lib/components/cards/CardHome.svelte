@@ -4,7 +4,7 @@
 
     export let uid: string;
     export let menuId: string;
-    export let menuImg: string;
+    export let menuImg: string | null;
     export let menuName: string;
     export let userName: string;
     export let tags: string[] = [];
