@@ -5,6 +5,8 @@
         handleRemoveFromFavorite,
     } from "$lib/database-actions/handleFavorite";
     import { handleRate } from "$lib/database-actions/handleRate";
+    import Title from "./card-elements/Title.svelte";
+    import Badge from "./card-elements/Badge.svelte";
 
     export let uid: string;
     export let menuId: string;
@@ -14,7 +16,7 @@
     export let tags: string[] = [];
     export let avgRating: number | null;
     export let views: number;
-    export let about: string = "";
+    export let about: string;
     export let ingredients: { [key: number]: string } = {};
     export let procedures: { [key: number]: string } = {};
     export let favoritedBy: string[] = [];
@@ -34,31 +36,20 @@
             />
         {/if}
 
-        <div class="mr-auto ml-2">
-            <a href="/menu/{menuId}" class="card-title text-2xl">{menuName}</a>
-            <a href="/user/{uid}" class="card-normal text-xl block mb-1"
-                >By {userName}</a
-            >
-            {#each tags as tag}
-                <h3 class="badge badge-ghost text-lg p-2 mr-1 mt-1">#{tag}</h3>
-            {/each}
-        </div>
+        <Title
+            style="mr-auto ml-2"
+            {uid}
+            {menuId}
+            {menuName}
+            {userName}
+            {tags}
+        />
 
         <div
             class="flex flex-col space-y-5 mx-2 text-center items-center w-fit"
         >
-            <div
-                class="text-center w-max p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
-            >
-                {#if avgRating}
-                    <h3 class="text-2xl text-neutral-100">
-                        {avgRating.toFixed(2)}
-                    </h3>
-                {:else}
-                    <h3 class="text-2xl text-neutral-100">-</h3>
-                {/if}
-                <h3 class="text-base text-neutral-100">views: {views}</h3>
-            </div>
+            <Badge {avgRating} {views} />
+
             {#if $user}
                 {#if favoritedBy.includes($user.uid)}
                     <button

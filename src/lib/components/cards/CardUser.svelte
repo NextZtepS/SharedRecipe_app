@@ -1,5 +1,7 @@
 <script lang="ts">
     import { user } from "$lib/firebase";
+    import Badge from "./card-elements/Badge.svelte";
+    import Title from "./card-elements/Title.svelte";
 
     export let uid: string;
     export let menuId: string;
@@ -16,7 +18,7 @@
 </script>
 
 <div class="card card-compact w-full h-full p-3 border-2 bg-base-100 shadow-xl">
-    <div class="sm:flex items-center text-sm">
+    <div class="sm:flex items-center">
         {#if menuImg}
             <a href="/menu/{menuId}" class="h-auto sm:w-3/5 p-2 mx-2">
                 <img
@@ -29,29 +31,14 @@
         {/if}
 
         <div class="flex flex-auto items-center">
-            <div class="mx-2">
-                <h2 class="card-title text-2xl">{menuName}</h2>
-                {#each tags as tag}
-                    <h3 class="badge badge-ghost text-lg p-2 mr-1 mt-1">
-                        #{tag}
-                    </h3>
-                {/each}
-                <p class="text-base mt-2">{about.substring(0, 300) ?? ""}</p>
-            </div>
+            <Title style="ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
+                <p class="text-base mt-2">
+                    {about.substring(0, 300) ?? ""}
+                </p>
+            </Title>
 
             <div class="flex flex-col space-y-5 p-2 ml-auto my-2 text-center">
-                <div
-                    class="text-center w-max p-3 mx-auto rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
-                >
-                    {#if avgRating}
-                        <h3 class="text-2xl text-neutral-100">
-                            {avgRating.toFixed(2)}
-                        </h3>
-                    {:else}
-                        <h3 class="text-2xl text-neutral-100">-</h3>
-                    {/if}
-                    <h2 class="text-base text-neutral-100">views: {views}</h2>
-                </div>
+                <Badge {avgRating} {views} />
                 {#if $user?.uid == uid}
                     <a href="/menu/edit/{menuId}" class="btn btn-primary">
                         edit

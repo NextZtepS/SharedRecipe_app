@@ -1,4 +1,7 @@
 <script lang="ts">
+    import Badge from "./card-elements/Badge.svelte";
+    import Title from "./card-elements/Title.svelte";
+
     export let uid: string;
     export let menuId: string;
     export let menuImg: string;
@@ -30,32 +33,8 @@
     <div class="card-body">
         <div class="p-2">
             <div class="flex items-center justify-between my-2">
-                <div>
-                    <a href="/menu/{menuId}" class="card-title text-2xl"
-                        >{menuName}</a
-                    >
-                    <a href="/user/{uid}" class="card-normal text-xl block mb-1"
-                        >By {userName}
-                    </a>
-                    {#each tags as tag}
-                        <h3 class="badge badge-ghost text-lg p-2 mr-1 mt-1">
-                            #{tag}
-                        </h3>
-                    {/each}
-                </div>
-
-                <div
-                    class="text-center p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
-                >
-                    {#if avgRating}
-                        <h3 class="text-2xl text-neutral-100">
-                            {avgRating.toFixed(2)}
-                        </h3>
-                    {:else}
-                        <h3 class="text-2xl text-neutral-100">-</h3>
-                    {/if}
-                    <h2 class="text-base text-neutral-100">views: {views}</h2>
-                </div>
+                <Title {uid} {menuId} {menuName} {userName} {tags} />
+                <Badge {avgRating} {views} />
             </div>
 
             <p class="mt-4 mb-2 text-base">{about.substring(0, 300)}</p>
