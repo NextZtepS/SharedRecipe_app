@@ -16,6 +16,18 @@ const firebaseConfig = {
     appId: "1:214511376097:web:531cd02d68b93810c7c9a0"
 };
 
+//TODO: Infrastructure Migration
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCIy8E1dPDKIoJojTlmfMj5A5X-dLfDyU8",
+//     authDomain: "shared-recipe.firebaseapp.com",
+//     projectId: "shared-recipe",
+//     storageBucket: "shared-recipe.appspot.com",
+//     messagingSenderId: "592985192315",
+//     appId: "1:592985192315:web:670e12f4bd230f01ebafde",
+//     measurementId: "G-WZR4VRD285"
+// };
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

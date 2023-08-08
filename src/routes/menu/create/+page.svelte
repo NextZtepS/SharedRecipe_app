@@ -14,7 +14,6 @@
     let menuName: string = "";
     let tagString: string = "";
     let about: string = "";
-    // the 2 variables below must be initialized to prevent the interactive fields from failing
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};
     let visibility: "public" | "private" = "public";
@@ -27,7 +26,7 @@
         >
             <div class="form-control w-full max-w-xs mx-auto my-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">Upload the photo of the menu</label>
+                <label class="label font-semibold">Upload the photo of the menu</label>
                 <img class="p-3" src={previewURL ?? ""} alt="" width="256" />
                 <input
                     type="file"
@@ -39,11 +38,11 @@
 
             <div class="form-control w-full max-w-sm mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">Menu name</label>
+                <label class="label font-semibold">Menu name</label>
                 <div class="indicator">
-                    <span class="indicator-item badge badge-warning text-xs"
-                        >Required</span
-                    >
+                    <span class="indicator-item badge badge-warning text-xs">
+                        Required
+                    </span>
                     <input
                         type="text"
                         placeholder="Name of your menu"
@@ -55,7 +54,7 @@
 
             <div class="form-control w-full max-w-lg mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">Tag</label>
+                <label class="label font-semibold">Tag</label>
                 <input
                     type="text"
                     placeholder="please separate each tag with a space e.g. #tag1 #tag2 #..."
@@ -66,7 +65,7 @@
 
             <div class="form-control mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">About</label>
+                <label class="label font-semibold">About</label>
                 <textarea
                     class="textarea textarea-bordered h-24"
                     placeholder="About your menu"
@@ -76,7 +75,7 @@
 
             <div class="form-control mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">Ingredient</label>
+                <label class="label font-semibold">Ingredient</label>
 
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <div class="px-2 mb-2">
@@ -109,7 +108,7 @@
 
             <div class="form-control mb-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label">Procedure</label>
+                <label class="label font-semibold">Procedure</label>
 
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <div class="px-2 mb-2">
@@ -138,12 +137,13 @@
 
             <div class="flex align-middle px-2 mt-3">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="inline-flex text-md mt-1">
+                <label class="inline-flex text-md font-semibold mt-1">
                     Please choose your menu's visibility
                 </label>
-                <select 
+                <select
                     class="select select-bordered select-sm max-w-xs inline-flex w-32 h-8 ml-2"
-                    bind:value={visibility}>
+                    bind:value={visibility}
+                >
                     <option value="public">Public</option>
                     <option value="private">Private</option>
                 </select>
