@@ -12,7 +12,7 @@ export async function writeNewMenu(
     tagString: string,
     about: string,
     ingredients: { [key: number]: string },
-    precedures: { [key: number]: string },
+    procedures: { [key: number]: string },
     visibility: "public" | "private"
 ) {
     let successful = true;
@@ -34,7 +34,7 @@ export async function writeNewMenu(
         tags: handleTagString(tagString),
         about: about ?? "",
         ingredients: ingredients ?? {},
-        precedures: precedures ?? {},
+        procedures: procedures ?? {},
         lastestEdited: serverTimestamp(),
         avgRating: null,
         ratings: {},

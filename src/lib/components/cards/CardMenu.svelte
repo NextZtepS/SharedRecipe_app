@@ -24,7 +24,7 @@
 </script>
 
 <div
-    class="card card-compact w-full h-full p-4 md:p-8 border-2 bg-base-100 shadow-xl"
+    class="card card-compact w-full h-fit p-4 md:p-8 border-2 bg-base-100 shadow-xl"
 >
     <div class="md:flex items-center h-fit">
         {#if menuImg}
