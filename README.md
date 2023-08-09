@@ -13,7 +13,8 @@ The key features on this application include:
 - improved image viewport size
 
 ### Upcoming release (1.0.3)
-- to be determined
+- more secure statement management
+- new loading state indicator for UI
 
 ## Technology
 
