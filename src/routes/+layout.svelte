@@ -54,7 +54,7 @@
                 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                 <label
                     tabindex="0"
-                    class="btn btn-ghost btn-circle avatar mt-0.5"
+                    class="btn btn-ghost btn-circle avatar mt-1"
                 >
                     <img
                         class="rounded-full"

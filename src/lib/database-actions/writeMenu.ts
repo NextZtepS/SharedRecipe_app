@@ -27,11 +27,7 @@ export async function writeMenu(
         return;
     }
 
-    const storageRef = ref(
-        storage,
-        `menus/${menuId}/images/menuImg_0.png`
-    );
-    
+    const storageRef = ref(storage, `menus/${menuId}/images/menuImg_0.png`);
     let result, url;
     if (Img) {
         try {

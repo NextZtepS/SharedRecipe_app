@@ -1,4 +1,4 @@
-# SharedRecipe
+# SharedRecipe [link](https://shared-recipe.web.app)
 
 SharedRecipe is an online web application in which cooking enthusiasts come and share their beloved recipes.  
 The key features on this application include:
@@ -19,5 +19,6 @@ The key features on this application include:
 ## Technology
 
 SharedRecipe is the web application built on the Svelte and Firebase infrastructure. 
-Most of the codebase is implemented in Svelte and Typescripts.
+The codebase is implemented in Svelte and Typescripts.
+Back-end infrastructure is supported by Firebase services, including: Authentication, Firestore Database, Storage, Hosting, and Functions.
 Styling in this app is implemented using Tailwind CSS with DaisyUI plugin.

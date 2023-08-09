@@ -1,5 +1,5 @@
 import { db, storage } from "$lib/firebase";
-import { addDoc, collection, serverTimestamp, setDoc } from "firebase/firestore";
+import { DocumentReference, addDoc, collection, serverTimestamp, setDoc } from "firebase/firestore";
 import { handleTagString, reverseTagString } from "../utils/tags";
 import { createKeywords } from "../utils/createKeywords";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -48,7 +48,7 @@ export async function writeNewMenu(
         visibility: visibility,
     };
     
-    let docRef;
+    let docRef: DocumentReference | null = null;
     try {
         docRef = await addDoc(colPath, docData);
     } catch (err) {
@@ -57,7 +57,8 @@ export async function writeNewMenu(
     }
 
     if (docRef) {
-        const storageRef = ref(storage, `menus/${docRef.id}/images/menuImg_0.png`);
+        const menuId = docRef.id;
+        const storageRef = ref(storage, `menus/${menuId}/images/menuImg_0.png`);
         let result, url;
         if (Img) {
             try {
@@ -71,7 +72,7 @@ export async function writeNewMenu(
 
         try {
             const addtionalData = {
-                menuId: docRef.id,
+                menuId: menuId,
                 menuImg: url ?? null,
             };
             await setDoc(docRef, addtionalData, { merge: true });
