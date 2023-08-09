@@ -57,7 +57,7 @@ export async function writeNewMenu(
     }
 
     if (docRef) {
-        const storageRef = ref(storage, `menus/${docRef.id}/images/menuImg.png`);
+        const storageRef = ref(storage, `menus/${docRef.id}/images/menuImg_0.png`);
         let result, url;
         if (Img) {
             try {

@@ -5,7 +5,7 @@ import { deleteObject, ref } from "firebase/storage";
 export async function deleteMenu(menuId: string, uid: string) {
     let successful = true;
 
-    const storageRef = ref(storage, `menus/${menuId}/images/menuImg_400x300.png`)
+    const storageRef = ref(storage, `menus/${menuId}/images/menuImg_0.png`)
     try {
         await deleteObject(storageRef);
     } catch (err) {

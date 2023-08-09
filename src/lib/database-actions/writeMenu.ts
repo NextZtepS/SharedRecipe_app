@@ -29,7 +29,7 @@ export async function writeMenu(
 
     const storageRef = ref(
         storage,
-        `menus/${menuId}/images/menuImg.png`
+        `menus/${menuId}/images/menuImg_0.png`
     );
     
     let result, url;
