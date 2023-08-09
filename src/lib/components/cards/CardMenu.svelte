@@ -24,51 +24,53 @@
 </script>
 
 <div
-    class="card card-compact w-full h-full p-4 sm:p-10 border-2 bg-base-100 shadow-xl"
+    class="card card-compact w-full h-full p-4 md:p-8 border-2 bg-base-100 shadow-xl"
 >
-    <div class="flex items-center">
+    <div class="md:flex items-center h-fit">
         {#if menuImg}
             <img
-                class="object-cover w-44 sm:w-56 lg:w-64 pr-2 mr-2"
+                class="img object-cover p-2 mx-auto"
                 src={menuImg}
                 loading="lazy"
                 alt=""
             />
         {/if}
 
-        <Title
-            style="ml-2 mr-auto "
-            {uid}
-            {menuId}
-            {menuName}
-            {userName}
-            {tags}
-        />
-
-        <div
-            class="flex flex-col space-y-5 mx-2 text-center items-center w-fit"
-        >
-            <Badge {avgRating} {views} />
-
-            {#if $user}
-                {#if favoritedBy.includes($user.uid)}
-                    <button
-                        class="btn btn-primary w-full"
-                        on:click|preventDefault={async () =>
-                            handleRemoveFromFavorite(menuId, $user?.uid ?? "")}
-                    >
-                        remove from ♡
-                    </button>
-                {:else}
-                    <button
-                        class="btn btn-primary w-full"
-                        on:click|preventDefault={async () =>
-                            handleAddToFavorite(menuId, $user?.uid ?? "")}
-                    >
-                        add to ♡
-                    </button>
+        <div class="flex flex-auto items-center p-2">
+            <Title
+                style="ml-2 mr-auto "
+                {uid}
+                {menuId}
+                {menuName}
+                {userName}
+                {tags}
+            />
+    
+            <div
+                class="flex flex-col space-y-5 mx-2 text-center items-center w-fit"
+            >
+                <Badge {avgRating} {views} />
+    
+                {#if $user}
+                    {#if favoritedBy.includes($user.uid)}
+                        <button
+                            class="btn btn-primary w-full"
+                            on:click|preventDefault={async () =>
+                                handleRemoveFromFavorite(menuId, $user?.uid ?? "")}
+                        >
+                            remove from ♡
+                        </button>
+                    {:else}
+                        <button
+                            class="btn btn-primary w-full"
+                            on:click|preventDefault={async () =>
+                                handleAddToFavorite(menuId, $user?.uid ?? "")}
+                        >
+                            add to ♡
+                        </button>
+                    {/if}
                 {/if}
-            {/if}
+            </div>
         </div>
     </div>
 

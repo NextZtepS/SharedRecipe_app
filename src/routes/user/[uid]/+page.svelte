@@ -9,12 +9,12 @@
 </script>
 
 {#if author}
-    <h2 class="text-3xl font-semibold font-serif ml-6 mt-4 mb-8">
+    <h2 class="text-3xl font-semibold font-serif ml-6 mt-4 mb-10">
         Menu shared by {author.name}:
     </h2>
 
     {#if $user?.uid == author.uid}
-        <a href="/menu/create" class="btn btn-accent flex mx-auto w-48 md:w-72">
+        <a href="/menu/create" class="btn btn-accent flex mx-auto w-48 md:w-72 m-4">
             Add New Menu
         </a>
     {/if}

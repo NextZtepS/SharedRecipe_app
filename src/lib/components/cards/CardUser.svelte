@@ -17,12 +17,12 @@
     export const favoritedBy: string[] = [];
 </script>
 
-<div class="card card-compact w-full h-full p-3 border-2 bg-base-100 shadow-xl">
-    <div class="sm:flex items-center">
+<div class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl">
+    <div class="md:flex items-center">
         {#if menuImg}
-            <a href="/menu/{menuId}" class="h-auto sm:w-3/5 p-2 mx-2">
+            <a href="/menu/{menuId}" class="img py-auto m-2">
                 <img
-                    class="object-cover h-96 sm:h-auto w-full my-auto"
+                    class="object-cover mx-auto"
                     src={menuImg}
                     loading="lazy"
                     alt=""
@@ -31,7 +31,7 @@
         {/if}
 
         <div class="flex flex-auto items-center">
-            <Title style="ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
+            <Title style="p-2 md:ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
                 <p class="text-base mt-2">
                     {about.substring(0, 300) ?? ""}
                 </p>

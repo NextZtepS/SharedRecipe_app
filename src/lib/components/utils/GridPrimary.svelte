@@ -1,3 +1,3 @@
-<div class="grid gap-4 lg:gap-8 p-4 lg:px-8 lg:py-6 lg:grid-cols-2 2xl:grid-cols-3 4xl:grid-cols-4">
+<div class="grid gap-4 lg:gap-8 p-5 lg:px-8 lg:py-6 lg:grid-cols-2 2xl:grid-cols-3 4xl:grid-cols-4">
     <slot />
 </div>

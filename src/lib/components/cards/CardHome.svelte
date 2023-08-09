@@ -20,14 +20,16 @@
     class="card card-compact w-full h-full border-2 bg-base-100 shadow-xl overflow-auto"
 >
     {#if menuImg}
-        <a href="/menu/{menuId}" class="h-96 md:h-3/5">
+    <div class="mx-auto">
+        <a href="/menu/{menuId}" class="img h-auto">
             <img
-                class="object-cover h-full mx-auto"
+                class="object-cover"
                 src={menuImg}
                 loading="lazy"
                 alt=""
             />
         </a>
+    </div>
     {/if}
 
     <div class="card-body">

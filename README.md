@@ -8,17 +8,16 @@ The key features on this application include:
 - searching for any recipe that might suit your interest
 - enjoying an immersive UI experience both on mobile and desktop
 
-### Latest release (1.0.1)
-- more visibility control of your menu
-- better reactive UI for mobile devices
-- secure validations on multiple site actions
+### Latest release (1.0.2)
+- optimized image url to improve loading performance
+- improved image viewport size
 
-### Upcoming release (1.0.2)
-- more secure image sizing regulation
+### Upcoming release (1.0.3)
+- to be determined
 
 ## Technology
 
-SharedRecipe is the web application built on the Svelte and Firebase infrastructure. 
-The codebase is implemented in Svelte and Typescripts.
-Back-end infrastructure is supported by Firebase services, including: Authentication, Firestore Database, Storage, Hosting, and Functions.
-Styling in this app is implemented using Tailwind CSS with DaisyUI plugin.
+SharedRecipe is the web application built on the Svelte and Firebase infrastructure.  
+The codebase is implemented in Svelte and Typescripts.  
+Back-end infrastructure is supported by Firebase services, including: Authentication, Firestore Database, Storage, Hosting, and Functions.  
+Styling in this app is implemented using Tailwind CSS with DaisyUI plugin.  
