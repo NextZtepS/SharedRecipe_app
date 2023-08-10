@@ -19,10 +19,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app); //? Firebase Analytics doesn't support NodeJS environment
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-const analytics = getAnalytics(app); //! localhost doesn't work with analytics
 
 // Custom Store for Authenticated User 
 function userStore() {
