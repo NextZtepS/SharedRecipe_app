@@ -29,7 +29,7 @@
     <div class="md:flex items-center h-fit">
         {#if menuImg}
             <img
-                class="img object-cover p-2 mx-auto"
+                class="card-image object-cover p-2 mx-auto"
                 src={menuImg}
                 loading="lazy"
                 alt=""

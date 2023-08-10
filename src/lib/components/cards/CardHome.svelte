@@ -21,9 +21,9 @@
 >
     {#if menuImg}
     <div class="mx-auto">
-        <a href="/menu/{menuId}" class="img h-auto">
+        <a href="/menu/{menuId}" class="card-image h-auto">
             <img
-                class="object-cover"
+                class="object-cover max-h-fit max-w-fit"
                 src={menuImg}
                 loading="lazy"
                 alt=""
@@ -42,7 +42,7 @@
             <p class="mt-4 mb-2 text-base">{about.substring(0, 300)}</p>
         </div>
 
-        <div class="card-actions justify-center mx-auto mb-4">
+        <div class="card-actions justify-center mx-auto mt-auto mb-4">
             <a href="/menu/{menuId}" class="btn btn-primary">explore</a>
         </div>
     </div>

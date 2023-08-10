@@ -11,6 +11,7 @@ The key features on this application include:
 ### Latest release (1.0.2)
 - optimized image url to improve loading performance
 - improved image viewport size
+- more secure rating using cloud function
 
 ### Upcoming release (1.0.3)
 - more secure statement management

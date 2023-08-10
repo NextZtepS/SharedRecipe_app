@@ -93,15 +93,6 @@
                             Sign out
                         </button>
                     </li>
-                {:else}
-                    <li>
-                        <button
-                            on:click={signInWithGoogle}
-                            class="text-lg text-neutral"
-                        >
-                            Sign in
-                        </button>
-                    </li>
                 {/if}
             </ul>
         </div>
