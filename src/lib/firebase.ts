@@ -22,7 +22,7 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-//TODO: const analytics = getAnalytics(app);
+const analytics = getAnalytics(app); //! localhost doesn't work with analytics
 
 // Custom Store for Authenticated User 
 function userStore() {

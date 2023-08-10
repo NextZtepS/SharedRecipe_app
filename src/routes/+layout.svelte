@@ -23,13 +23,15 @@
     }
 </script>
 
-<div class="navbar bg-primary p-8 mb-6 text-neutral-100">
+<div class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
     <div class="navbar-start">
+        <img alt="" src="SharedRecipe_logo_v0.png" width="64" class=" rounded-lg"/>
         <a
             href="/"
             class="btn btn-ghost normal-case text-3xl"
             on:click={forceReload}
-            >SharedRecipe
+        >
+            SharedRecipe
         </a>
     </div>
 
@@ -103,7 +105,7 @@
     <slot />
 </div>
 
-<footer class="footer footer-center p-10 mt-6 bg-secondary text-neutral-100">
+<footer class="footer footer-center p-12 mt-6 bg-secondary text-neutral-100">
     <div>
         <p class="font-bold">
             created by NextZtepS <br />Developer, Harvey Mudd College '26
