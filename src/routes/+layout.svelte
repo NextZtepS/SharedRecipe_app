@@ -25,7 +25,7 @@
 
 <div class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
     <div class="navbar-start">
-        <img alt="" src="SharedRecipe_logo_v0.png" width="64" class=" rounded-lg"/>
+        <img alt="" src="/SharedRecipe_logo_v0.png" width="64" class=" rounded-lg"/>
         <a
             href="/"
             class="btn btn-ghost normal-case text-3xl"
