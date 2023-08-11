@@ -17,7 +17,7 @@ export function createKeywords(
     if (tagList.length != 0) {
         for (let tag of tagList) {
             tag = tag.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-            for (let i = 1; i <= userName.length; i++) {
+            for (let i = 1; i <= tag.length; i++) {
                 keywords.push(tag.substring(0, i));
             }
         }
