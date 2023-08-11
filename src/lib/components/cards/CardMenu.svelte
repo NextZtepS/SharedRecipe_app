@@ -55,7 +55,7 @@
                     {#if favoritedBy.includes($user.uid)}
                         <button
                             class="btn btn-primary w-full"
-                            on:click|preventDefault={async () =>
+                            on:click|preventDefault|once={async () =>
                                 handleRemoveFromFavorite(menuId, $user?.uid ?? "")}
                         >
                             remove from ♡
@@ -63,7 +63,7 @@
                     {:else}
                         <button
                             class="btn btn-primary w-full"
-                            on:click|preventDefault={async () =>
+                            on:click|preventDefault|once={async () =>
                                 handleAddToFavorite(menuId, $user?.uid ?? "")}
                         >
                             add to ♡
@@ -106,7 +106,7 @@
             />
             <button
                 class="btn btn-primary px-6"
-                on:click|preventDefault={async () =>
+                on:click|preventDefault|once={async () =>
                     handleRate(menuId, $user?.uid ?? "", givenRating)}
             >
                 rate

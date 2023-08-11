@@ -151,7 +151,7 @@
 
             <button
                 class="form-control btn btn-success mx-auto mt-8"
-                on:click|preventDefault={async () =>
+                on:click|preventDefault|once={async () =>
                     writeNewMenu(
                         Img,
                         menuName,

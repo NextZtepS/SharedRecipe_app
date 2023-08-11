@@ -162,7 +162,7 @@
 
             <button
                 class="form-control btn btn-success mx-auto mt-8"
-                on:click|preventDefault={async () =>
+                on:click|preventDefault|once={async () =>
                     writeMenu(
                         previewURL ?? "",
                         Img,
@@ -181,7 +181,7 @@
             </button>
             <button
                 class="form-control btn btn-error mx-auto mt-6"
-                on:click|preventDefault={async () =>
+                on:click|preventDefault|once={async () =>
                     deleteMenu(menuId ?? "", $user?.uid ?? "")}
             >
                 delete
