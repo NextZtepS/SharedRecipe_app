@@ -58,7 +58,7 @@
                 "array-contains",
                 searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
             ),
-            orderBy("lastestEdited", "desc"),
+            orderBy("latestEdited", "desc"),
             limit(24)
         );
 
@@ -95,7 +95,7 @@
                 "array-contains",
                 searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
             ),
-            orderBy("lastestEdited", "desc"),
+            orderBy("latestEdited", "desc"),
             startAfter(lastDoc),
             limit(12)
         );

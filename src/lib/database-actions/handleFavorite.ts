@@ -1,5 +1,5 @@
 import { db } from "$lib/firebase";
-import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayRemove, arrayUnion, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 
 export async function handleAddToFavorite(menuId: string, uid: string) {
     let successful = true;
@@ -8,6 +8,7 @@ export async function handleAddToFavorite(menuId: string, uid: string) {
     try {
         await updateDoc(docPath, {
             favoritedBy: arrayUnion(uid),
+            lastedUpdated: serverTimestamp()
         });
     } catch (err) {
         successful = false;
@@ -25,9 +26,9 @@ export async function handleRemoveFromFavorite(menuId: string, uid: string) {
     const docPath = doc(db, `menus/${menuId}`);
 
     try {
-        // Atomically add a new region to the "regions" array field.
         await updateDoc(docPath, {
             favoritedBy: arrayRemove(uid),
+            lastedUpdated: serverTimestamp()
         });
     } catch (err) {
         successful = false;

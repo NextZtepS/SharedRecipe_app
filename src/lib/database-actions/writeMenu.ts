@@ -27,7 +27,7 @@ export async function writeMenu(
         return;
     }
 
-    const storageRef = ref(storage, `menus/${menuId}/images/menuImg_0.png`);
+    const storageRef = ref(storage, `users/${uid}/menus/${menuId}/images/menuImg_0.png`);
     let result, url;
     if (Img) {
         try {
@@ -49,7 +49,8 @@ export async function writeMenu(
         about: about ?? "",
         ingredients: ingredients ?? {},
         procedures: procedures ?? {},
-        lastestEdited: serverTimestamp(),
+        latestEdited: serverTimestamp(),
+        latestUpdated: serverTimestamp(),
         keywords: createKeywords(
             menuName ?? "",
             userName ?? "",

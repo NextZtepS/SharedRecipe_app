@@ -9,7 +9,7 @@ export async function writeUser(user: User) {
         name: user.displayName ?? "annonymous",
         email: user.email,
         photoURL: user.photoURL ?? "",
-        lastestSignIn: serverTimestamp(),
+        latestSignIn: serverTimestamp(),
     };
     try {
         await setDoc(docPath, docData, { merge: true });

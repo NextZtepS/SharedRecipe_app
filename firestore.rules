@@ -3,16 +3,42 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
     match /users/{uid} {
       allow read;
-      allow write: if request.auth.uid == uid;
+      allow write: if isOwner(uid);
     }
-    
-    match /menus/{menuId=**} {
-     	allow read;
-      allow update;
-      allow create: if request.auth != null;
-      allow delete: if request.auth.uid == resource.data.uid
+
+    match /menus/{menuId} {
+      allow read;
+      allow update: if isNotDuplicated();
+      allow create: if isSignIn();
+      allow delete: if isOwner(existingData().uid);
+    }
+
+    // Functions
+
+    function existingData() {
+      return resource.data;
+    }
+
+    function incomingData(req) {
+      return req.resource.data;
+    }
+
+    function isSignIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return request.auth.uid == uid;
+    }
+
+    function isNotDuplicated() {
+      return request.time > existingData().latestUpdated + duration.value(1, "s");
     }
   }
 }

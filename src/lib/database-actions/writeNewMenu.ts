@@ -35,7 +35,8 @@ export async function writeNewMenu(
         about: about ?? "",
         ingredients: ingredients ?? {},
         procedures: procedures ?? {},
-        lastestEdited: serverTimestamp(),
+        latestEdited: serverTimestamp(),
+        latestUpdated: serverTimestamp(),
         avgRating: null,
         ratings: {},
         views: 0,
@@ -58,7 +59,7 @@ export async function writeNewMenu(
 
     if (docRef) {
         const menuId = docRef.id;
-        const storageRef = ref(storage, `menus/${menuId}/images/menuImg_0.png`);
+        const storageRef = ref(storage, `users/${uid}/menus/${menuId}/images/menuImg_0.png`);
         let result, url;
         if (Img) {
             try {

@@ -8,8 +8,13 @@ import { writable } from "svelte/store";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
-    // your app configuration
-    //...
+    apiKey: "AIzaSyCIy8E1dPDKIoJojTlmfMj5A5X-dLfDyU8",
+    authDomain: "shared-recipe.firebaseapp.com",
+    projectId: "shared-recipe",
+    storageBucket: "shared-recipe.appspot.com",
+    messagingSenderId: "592985192315",
+    appId: "1:592985192315:web:14b9325eb5f5a244ebafde",
+    measurementId: "G-MSSHMZPMBZ"
 };
 
 // Initialize Firebase

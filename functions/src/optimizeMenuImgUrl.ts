@@ -5,7 +5,8 @@ import { getFirestore } from "firebase-admin/firestore";
 
 export const optimizeMenuImgUrlFunc = onObjectFinalized(async (event) => {
     const path = event.data.name;
-    const menuId = path.split("/")[1];
+    // const uid = path.split("/")[1];
+    const menuId = path.split("/")[3];
     if (path.includes("/images/resized")) {
         let successful = true;
         try {

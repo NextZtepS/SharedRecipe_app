@@ -16,5 +16,6 @@ export interface menu {
     avgRating: number | null,
     views: number,
     favoritedBy: string[],
-    lastestEdited: Timestamp
+    latestEdited: Timestamp,
+    latestUpdated: Timestamp
 }

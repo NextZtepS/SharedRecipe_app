@@ -1,5 +1,5 @@
 import { db } from "$lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export async function updateView(menuId: string) {
     const docPath = doc(db, `menus/${menuId}`);
@@ -15,6 +15,7 @@ export async function updateView(menuId: string) {
     const oldViews: number = menu?.views;
     const docData = {
         views: +oldViews + 1,
+        latestUpdated: serverTimestamp()
     };
     try {
         await setDoc(docPath, docData, { merge: true });

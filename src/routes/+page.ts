@@ -7,7 +7,7 @@ export const load = (async () => {
     const menusQuery = query(
         collection(db, "menus"),
         where("visibility", "==", "public"),
-        orderBy("lastestEdited", "desc"),
+        orderBy("latestEdited", "desc"),
         limit(24),
     );
 

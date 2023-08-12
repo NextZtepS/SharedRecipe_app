@@ -5,7 +5,6 @@
 
     export let data: PageData;
     const { menu } = data;
-    console.log(menu);
 </script>
 
 <div class="p-6 md:px-8">

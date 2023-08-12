@@ -32,7 +32,7 @@ async function deleteFolder(ref: StorageReference): Promise<boolean> {
 export async function deleteMenu(menuId: string, uid: string) {
     let successful = true;
 
-    const storageRef = ref(storage, `menus/${menuId}`)
+    const storageRef = ref(storage, `users/${uid}/menus/${menuId}`)
     try {
         successful = await deleteFolder(storageRef);
     }

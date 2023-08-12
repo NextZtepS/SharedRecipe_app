@@ -1,5 +1,5 @@
 import { db } from "$lib/firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 
 export async function handleRate(
     menuId: string,
@@ -16,6 +16,7 @@ export async function handleRate(
     const docPath = doc(db, `menus/${menuId}`);
     let docData = {
         [`ratings.${uid}`]: givenRating,
+        latestUpdated: serverTimestamp()
     };
     try {
         await updateDoc(docPath, docData);
