@@ -1,6 +1,6 @@
 <script lang="ts">
     import { user } from "$lib/firebase";
-    import { reverseTagString } from "$lib/utils/tags";
+    import { reverseTagString } from "$lib/database-actions/utils/tags";
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
     import { nowIdle, nowProcessing, state } from "$lib/stores/state";
