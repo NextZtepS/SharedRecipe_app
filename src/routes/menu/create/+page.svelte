@@ -2,6 +2,7 @@
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
     import { user } from "$lib/firebase";
     import { writeNewMenu } from "$lib/database-actions/writeNewMenu";
+    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
 
     let numProcedure = 1;
     let numIngredient = 1;
@@ -17,8 +18,6 @@
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};
     let visibility: "public" | "private" = "public";
-
-    let processing = false;
 </script>
 
 <AuthCheck>
@@ -156,8 +155,8 @@
             <button
                 class="form-control btn btn-success mx-auto mt-8"
                 on:click|preventDefault={async () => {
-                    if (!processing) {
-                        processing = true;
+                    if ($state === "idle") {
+                        nowProcessing();
                         await writeNewMenu(
                             Img,
                             menuName,
@@ -169,13 +168,13 @@
                             precedures,
                             visibility
                         );
-                        processing = false;
+                        nowIdle();
                     }
                 }}
             >
-                {#if !processing}
-                    publish
-                {:else}
+                {#if $state === "idle"}
+                    Publish
+                {:else if $state === "processing"}
                     <span class="loading loading-dots loading-md" />
                 {/if}
             </button>

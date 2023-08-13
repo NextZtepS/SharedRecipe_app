@@ -2,7 +2,7 @@
     import CardHome from "$lib/components/cards/CardHome.svelte";
     import GridPrimary from "$lib/components/utils/GridPrimary.svelte";
     import {
-    QueryDocumentSnapshot,
+        QueryDocumentSnapshot,
         collection,
         getDocs,
         limit,
@@ -12,13 +12,12 @@
         where,
     } from "firebase/firestore";
     import { db } from "$lib/firebase";
-    import type { PageData } from "./$types";
     import type { menu } from "$lib/interfaces/menu";
+    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import type { PageData } from "./$types";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
-
-    export let processing = false;
 
     async function loadMoreHomeMenu() {
         if (!lastDoc) return;
@@ -86,10 +85,10 @@
     async function handleKeypress(e: KeyboardEvent) {
         let keyPressed = e.key;
         if (keyPressed === "Enter") {
-            if (!processing) {
-                processing = true;
+            if ($state === "idle") {
+                nowProcessing();
                 await handleSearch();
-                processing = false;
+                nowIdle();
             }
         }
     }
@@ -139,16 +138,16 @@
         <button
             class="btn btn-neutral ml-1.5 text-base-200"
             on:click|preventDefault={async () => {
-                if (!processing) {
-                    processing = true;
+                if ($state === "idle") {
+                    nowProcessing();
                     await handleSearch();
-                    processing = false;
+                    nowIdle();
                 }
             }}
         >
-            {#if !processing}
+            {#if $state === "idle"}
                 Search
-            {:else}
+            {:else if $state === "processing"}
                 <span class="loading loading-dots loading-md" />
             {/if}
         </button>
@@ -157,19 +156,30 @@
 
 <GridPrimary>
     {#if searched}
-        {#each searchedMenus as menu}
-            <CardHome
-                uid={menu.uid}
-                menuId={menu.menuId}
-                menuImg={menu.menuImg}
-                menuName={menu.menuName}
-                userName={menu.userName}
-                tags={menu.tags}
-                avgRating={menu.avgRating}
-                views={menu.views}
-                about={menu.about}
-            />
-        {/each}
+        {#if searchedMenus.length === 0}
+            <div class="text-center m-6">
+                <p class="text-xl m-2">
+                    Cannot find any menu!
+                </p>
+                <p class="text-xl m-2">
+                    Please try again!
+                </p>
+            </div>
+        {:else}
+            {#each searchedMenus as menu}
+                <CardHome
+                    uid={menu.uid}
+                    menuId={menu.menuId}
+                    menuImg={menu.menuImg}
+                    menuName={menu.menuName}
+                    userName={menu.userName}
+                    tags={menu.tags}
+                    avgRating={menu.avgRating}
+                    views={menu.views}
+                    about={menu.about}
+                />
+            {/each}
+        {/if}
     {:else}
         {#each menus as menu}
             <CardHome
@@ -191,16 +201,16 @@
     <button
         class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
         on:click|preventDefault={async () => {
-            if (!processing) {
-                processing = true;
+            if ($state === "idle") {
+                nowProcessing();
                 await loadMoreSearchedMenu();
-                processing = false;
+                nowIdle();
             }
         }}
     >
-        {#if !processing}
+        {#if $state === "idle"}
             Load More Result
-        {:else}
+        {:else if $state === "processing"}
             <span class="loading loading-dots loading-md" />
         {/if}
     </button>
@@ -208,16 +218,16 @@
     <button
         class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
         on:click|preventDefault={async () => {
-            if (!processing) {
-                processing = true;
+            if ($state === "idle") {
+                nowProcessing();
                 await loadMoreHomeMenu();
-                processing = false;
+                nowIdle();
             }
         }}
     >
-        {#if !processing}
+        {#if $state === "idle"}
             Load More Menu
-        {:else}
+        {:else if $state === "processing"}
             <span class="loading loading-dots loading-md" />
         {/if}
     </button>

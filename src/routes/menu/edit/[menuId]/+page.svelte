@@ -3,6 +3,7 @@
     import { reverseTagString } from "$lib/utils/tags";
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
+    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
     import type { PageData } from "./$types";
 
     export let data: PageData;
@@ -28,8 +29,6 @@
     if (numProcedure) numProcedure = +numProcedure;
     else numProcedure = 1;
     let visibility: "public" | "private" = menu?.visibility ?? "private";
-
-    export let processing = false;
 </script>
 
 {#if menu?.uid === $user?.uid}
@@ -167,8 +166,8 @@
             <button
                 class="form-control btn btn-success mx-auto mt-8"
                 on:click|preventDefault={async () => {
-                    if (!processing) {
-                        processing = true;
+                    if ($state === "idle") {
+                        nowProcessing();
                         await writeMenu(
                             previewURL ?? "",
                             Img,
@@ -182,13 +181,13 @@
                             procedures,
                             visibility
                         );
-                        processing = false;
+                        nowIdle();
                     }
                 }}
             >
-                {#if !processing}
-                    save
-                {:else}
+                {#if $state === "idle"}
+                    Save
+                {:else if $state === "processing"}
                     <span class="loading loading-dots loading-md" />
                 {/if}
             </button>
@@ -196,16 +195,16 @@
             <button
                 class="form-control btn btn-error mx-auto mt-6"
                 on:click|preventDefault|once={async () => {
-                    if (!processing) {
-                        processing = true;
+                    if ($state === "idle") {
+                        nowProcessing();
                         await deleteMenu(menuId ?? "", $user?.uid ?? "");
-                        processing = false;
+                        nowIdle();
                     }
                 }}
             >
-                {#if !processing}
-                    delete
-                {:else}
+                {#if $state === "idle"}
+                    Delete
+                {:else if $state === "processing"}
                     <span class="loading loading-dots loading-md" />
                 {/if}
             </button>

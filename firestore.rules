@@ -14,7 +14,7 @@ service cloud.firestore {
 
     match /menus/{menuId} {
       allow read;
-      allow update: if isNotDuplicated();
+      allow update;
       allow create: if isSignIn();
       allow delete: if isOwner(existingData().uid);
     }
@@ -35,10 +35,6 @@ service cloud.firestore {
 
     function isOwner(uid) {
       return request.auth.uid == uid;
-    }
-
-    function isNotDuplicated() {
-      return request.time > existingData().latestUpdated + duration.value(1, "s");
     }
   }
 }

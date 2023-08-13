@@ -19,7 +19,7 @@ export default {
                     "base-100": "#F5F5F5",
                     "info": "#a0e5f3",
                     "success": "#38e5a9",    
-                    "warning": "#fbbb28",    
+                    "warning": "#ffca28",    
                     "error": "#da2b53",
                 },
             },
