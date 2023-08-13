@@ -2,6 +2,7 @@
     import CardHome from "$lib/components/cards/CardHome.svelte";
     import GridPrimary from "$lib/components/utils/GridPrimary.svelte";
     import {
+    QueryDocumentSnapshot,
         collection,
         getDocs,
         limit,
@@ -17,11 +18,14 @@
     export let data: PageData;
     let { menus, lastDoc } = data;
 
+    export let processing = false;
+
     async function loadMoreHomeMenu() {
+        if (!lastDoc) return;
         const menusQuery = query(
             collection(db, "menus"),
             where("visibility", "==", "public"),
-            orderBy("lastestEdited", "desc"),
+            orderBy("latestEdited", "desc"),
             startAfter(lastDoc),
             limit(12)
         );
@@ -45,11 +49,12 @@
     let searchKey: string;
     let searched: boolean = false;
     let searchedMenus: menu[] = [];
-    let lastSearchDoc;
+    let lastSearchDoc: QueryDocumentSnapshot | undefined;
 
     async function handleSearch() {
         searched = true;
         searchedMenus = [];
+        if (!searchKey) searchKey = "";
         const menusQuery = query(
             collection(db, "menus"),
             where("visibility", "==", "public"),
@@ -81,12 +86,17 @@
     async function handleKeypress(e: KeyboardEvent) {
         let keyPressed = e.key;
         if (keyPressed === "Enter") {
-            handleSearch();
+            if (!processing) {
+                processing = true;
+                await handleSearch();
+                processing = false;
+            }
         }
     }
 
     async function loadMoreSearchedMenu() {
-        if (!searchKey) searchKey = " ";
+        if (!lastSearchDoc) return;
+        if (!searchKey) searchKey = "";
         const menusQuery = query(
             collection(db, "menus"),
             where("visibility", "==", "public"),
@@ -128,9 +138,19 @@
         />
         <button
             class="btn btn-neutral ml-1.5 text-base-200"
-            on:click|preventDefault={handleSearch}
+            on:click|preventDefault={async () => {
+                if (!processing) {
+                    processing = true;
+                    await handleSearch();
+                    processing = false;
+                }
+            }}
         >
-            Search
+            {#if !processing}
+                Search
+            {:else}
+                <span class="loading loading-dots loading-md" />
+            {/if}
         </button>
     </div>
 </div>
@@ -170,15 +190,35 @@
 {#if searched}
     <button
         class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
-        on:click|preventDefault={loadMoreSearchedMenu}
+        on:click|preventDefault={async () => {
+            if (!processing) {
+                processing = true;
+                await loadMoreSearchedMenu();
+                processing = false;
+            }
+        }}
     >
-        Load More Result
+        {#if !processing}
+            Load More Result
+        {:else}
+            <span class="loading loading-dots loading-md" />
+        {/if}
     </button>
 {:else}
     <button
         class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
-        on:click|preventDefault={loadMoreHomeMenu}
+        on:click|preventDefault={async () => {
+            if (!processing) {
+                processing = true;
+                await loadMoreHomeMenu();
+                processing = false;
+            }
+        }}
     >
-        Load More Menu
+        {#if !processing}
+            Load More Menu
+        {:else}
+            <span class="loading loading-dots loading-md" />
+        {/if}
     </button>
 {/if}

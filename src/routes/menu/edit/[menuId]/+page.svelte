@@ -28,6 +28,8 @@
     if (numProcedure) numProcedure = +numProcedure;
     else numProcedure = 1;
     let visibility: "public" | "private" = menu?.visibility ?? "private";
+
+    export let processing = false;
 </script>
 
 {#if menu?.uid === $user?.uid}
@@ -37,7 +39,9 @@
         >
             <div class="form-control w-full max-w-xs mx-auto my-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label font-semibold">Upload the photo of the menu</label>
+                <label class="label font-semibold"
+                    >Upload the photo of the menu</label
+                >
                 <img class="p-3" src={previewURL ?? ""} alt="" width="256" />
                 <input
                     type="file"
@@ -162,29 +166,48 @@
 
             <button
                 class="form-control btn btn-success mx-auto mt-8"
-                on:click|preventDefault|once={async () =>
-                    writeMenu(
-                        previewURL ?? "",
-                        Img,
-                        menuName ?? "",
-                        menuId ?? "",
-                        $user?.displayName ?? "",
-                        $user?.uid ?? "",
-                        tagString,
-                        about ?? "",
-                        ingredients,
-                        procedures,
-                        visibility
-                    )}
+                on:click|preventDefault={async () => {
+                    if (!processing) {
+                        processing = true;
+                        await writeMenu(
+                            previewURL ?? "",
+                            Img,
+                            menuName ?? "",
+                            menuId ?? "",
+                            $user?.displayName ?? "",
+                            $user?.uid ?? "",
+                            tagString,
+                            about ?? "",
+                            ingredients,
+                            procedures,
+                            visibility
+                        );
+                        processing = false;
+                    }
+                }}
             >
-                save
+                {#if !processing}
+                    save
+                {:else}
+                    <span class="loading loading-dots loading-md" />
+                {/if}
             </button>
+
             <button
                 class="form-control btn btn-error mx-auto mt-6"
-                on:click|preventDefault|once={async () =>
-                    deleteMenu(menuId ?? "", $user?.uid ?? "")}
+                on:click|preventDefault|once={async () => {
+                    if (!processing) {
+                        processing = true;
+                        await deleteMenu(menuId ?? "", $user?.uid ?? "");
+                        processing = false;
+                    }
+                }}
             >
-                delete
+                {#if !processing}
+                    delete
+                {:else}
+                    <span class="loading loading-dots loading-md" />
+                {/if}
             </button>
         </form>
     </div>

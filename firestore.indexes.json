@@ -9,7 +9,7 @@
           "arrayConfig": "CONTAINS"
         },
         {
-          "fieldPath": "visiblity",
+          "fieldPath": "visibility",
           "order": "ASCENDING"
         },
         {

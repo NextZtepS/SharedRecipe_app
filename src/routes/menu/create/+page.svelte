@@ -17,6 +17,8 @@
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};
     let visibility: "public" | "private" = "public";
+
+    let processing = false;
 </script>
 
 <AuthCheck>
@@ -26,7 +28,9 @@
         >
             <div class="form-control w-full max-w-xs mx-auto my-4">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="label font-semibold">Upload the photo of the menu</label>
+                <label class="label font-semibold"
+                    >Upload the photo of the menu</label
+                >
                 <img class="p-3" src={previewURL ?? ""} alt="" width="256" />
                 <input
                     type="file"
@@ -151,20 +155,29 @@
 
             <button
                 class="form-control btn btn-success mx-auto mt-8"
-                on:click|preventDefault|once={async () =>
-                    writeNewMenu(
-                        Img,
-                        menuName,
-                        $user?.displayName ?? "",
-                        $user?.uid ?? "",
-                        tagString,
-                        about,
-                        ingredients,
-                        precedures,
-                        visibility
-                    )}
+                on:click|preventDefault={async () => {
+                    if (!processing) {
+                        processing = true;
+                        await writeNewMenu(
+                            Img,
+                            menuName,
+                            $user?.displayName ?? "",
+                            $user?.uid ?? "",
+                            tagString,
+                            about,
+                            ingredients,
+                            precedures,
+                            visibility
+                        );
+                        processing = false;
+                    }
+                }}
             >
-                publish
+                {#if !processing}
+                    publish
+                {:else}
+                    <span class="loading loading-dots loading-md" />
+                {/if}
             </button>
         </form>
     </div>

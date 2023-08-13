@@ -21,6 +21,8 @@
     export let procedures: { [key: number]: string } = {};
     export let favoritedBy: string[] = [];
     export let givenRating: number | null;
+
+    export let processing = false;
 </script>
 
 <div
@@ -45,28 +47,52 @@
                 {userName}
                 {tags}
             />
-    
+
             <div
                 class="flex flex-col space-y-5 mx-2 text-center items-center w-fit"
             >
                 <Badge {avgRating} {views} />
-    
+
                 {#if $user}
                     {#if favoritedBy.includes($user.uid)}
                         <button
                             class="btn btn-primary w-full"
-                            on:click|preventDefault|once={async () =>
-                                handleRemoveFromFavorite(menuId, $user?.uid ?? "")}
+                            on:click|preventDefault={async () => {
+                                if (!processing) {
+                                    processing = true;
+                                    await handleRemoveFromFavorite(
+                                        menuId,
+                                        $user?.uid ?? ""
+                                    );
+                                }
+                                processing = false;
+                            }}
                         >
-                            remove from ♡
+                            {#if !processing}
+                                remove from ♡
+                            {:else}
+                                <span class="loading loading-dots loading-md" />
+                            {/if}
                         </button>
                     {:else}
                         <button
                             class="btn btn-primary w-full"
-                            on:click|preventDefault|once={async () =>
-                                handleAddToFavorite(menuId, $user?.uid ?? "")}
+                            on:click|preventDefault={async () => {
+                                if (!processing) {
+                                    processing = true;
+                                    handleAddToFavorite(
+                                        menuId,
+                                        $user?.uid ?? ""
+                                    );
+                                }
+                                processing = false;
+                            }}
                         >
-                            add to ♡
+                            {#if !processing}
+                                add to ♡
+                            {:else}
+                                <span class="loading loading-dots loading-md" />
+                            {/if}
                         </button>
                     {/if}
                 {/if}
@@ -106,10 +132,19 @@
             />
             <button
                 class="btn btn-primary px-6"
-                on:click|preventDefault|once={async () =>
-                    handleRate(menuId, $user?.uid ?? "", givenRating)}
+                on:click|preventDefault={async () => {
+                    if (!processing) {
+                        processing = true;
+                        await handleRate(menuId, $user?.uid ?? "", givenRating);
+                        processing = false;
+                    }
+                }}
             >
-                rate
+                {#if !processing}
+                    rate
+                {:else}
+                    <span class="loading loading-dots loading-md" />
+                {/if}
             </button>
         </div>
         <h2 class="text-base text-center p-4">

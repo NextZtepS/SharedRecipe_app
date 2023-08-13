@@ -9,9 +9,7 @@ export const updateAvgRatingFunc = onDocumentUpdated("menus/{menuId}", async (ev
 
     const previousRatings = previousDocument?.ratings;
     const newRatings = newDocument?.ratings;
-    if (areEquivalentObject(previousRatings, newRatings)) {
-        return null;
-    } else {
+    if (!areEquivalentObject(previousRatings, newRatings)) {
         let successful = true;
         let avgRating: number;
         const ratings: number[] = Object.values(newRatings);
@@ -31,6 +29,8 @@ export const updateAvgRatingFunc = onDocumentUpdated("menus/{menuId}", async (ev
             logger.info(`Successfully updating menu (menuId: ${menuId}) avgRating to ${avgRating}!`);
         }
         return null;
+    } else {
+        return null;
     }
 });
 
@@ -48,3 +48,4 @@ function areEquivalentObject(object1: any, object2: any): boolean {
     }
     return true;
 }
+ 
