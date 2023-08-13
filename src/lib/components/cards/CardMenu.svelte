@@ -1,5 +1,6 @@
 <script lang="ts">
     import { user } from "$lib/firebase";
+    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
     import {
         handleAddToFavorite,
         handleRemoveFromFavorite,
@@ -21,8 +22,6 @@
     export let procedures: { [key: number]: string } = {};
     export let favoritedBy: string[] = [];
     export let givenRating: number | null;
-
-    export let processing = false;
 </script>
 
 <div
@@ -58,19 +57,19 @@
                         <button
                             class="btn btn-primary w-full"
                             on:click|preventDefault={async () => {
-                                if (!processing) {
-                                    processing = true;
+                                if ($state === "idle") {
+                                    nowProcessing();
                                     await handleRemoveFromFavorite(
                                         menuId,
                                         $user?.uid ?? ""
                                     );
+                                    nowIdle();
                                 }
-                                processing = false;
                             }}
                         >
-                            {#if !processing}
-                                remove from ♡
-                            {:else}
+                            {#if $state === "idle"}
+                                Remove from ♡
+                            {:else if $state === "processing"}
                                 <span class="loading loading-dots loading-md" />
                             {/if}
                         </button>
@@ -78,19 +77,19 @@
                         <button
                             class="btn btn-primary w-full"
                             on:click|preventDefault={async () => {
-                                if (!processing) {
-                                    processing = true;
+                                if ($state === "idle") {
+                                    nowProcessing();
                                     handleAddToFavorite(
                                         menuId,
                                         $user?.uid ?? ""
                                     );
+                                    nowIdle();
                                 }
-                                processing = false;
                             }}
                         >
-                            {#if !processing}
-                                add to ♡
-                            {:else}
+                            {#if $state === "idle"}
+                                Add to ♡
+                            {:else if $state === "processing"}
                                 <span class="loading loading-dots loading-md" />
                             {/if}
                         </button>
@@ -133,16 +132,16 @@
             <button
                 class="btn btn-primary px-6"
                 on:click|preventDefault={async () => {
-                    if (!processing) {
-                        processing = true;
+                    if ($state === "idle") {
+                        nowProcessing();
                         await handleRate(menuId, $user?.uid ?? "", givenRating);
-                        processing = false;
+                        nowIdle();
                     }
                 }}
             >
-                {#if !processing}
-                    rate
-                {:else}
+                {#if $state === "idle"}
+                    Rate
+                {:else if $state === "processing"}
                     <span class="loading loading-dots loading-md" />
                 {/if}
             </button>
