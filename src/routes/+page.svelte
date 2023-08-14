@@ -154,32 +154,28 @@
     </div>
 </div>
 
+{#if searched && searchedMenus.length === 0}
+    <div class="text-center m-6 mt-20">
+        <p class="text-xl m-2">Cannot find any menu!</p>
+        <p class="text-xl m-2">Please try again!</p>
+    </div>
+{/if}
+
 <GridPrimary>
     {#if searched}
-        {#if searchedMenus.length === 0}
-            <div class="text-center m-6">
-                <p class="text-xl m-2">
-                    Cannot find any menu!
-                </p>
-                <p class="text-xl m-2">
-                    Please try again!
-                </p>
-            </div>
-        {:else}
-            {#each searchedMenus as menu}
-                <CardHome
-                    uid={menu.uid}
-                    menuId={menu.menuId}
-                    menuImg={menu.menuImg}
-                    menuName={menu.menuName}
-                    userName={menu.userName}
-                    tags={menu.tags}
-                    avgRating={menu.avgRating}
-                    views={menu.views}
-                    about={menu.about}
-                />
-            {/each}
-        {/if}
+        {#each searchedMenus as menu}
+            <CardHome
+                uid={menu.uid}
+                menuId={menu.menuId}
+                menuImg={menu.menuImg}
+                menuName={menu.menuName}
+                userName={menu.userName}
+                tags={menu.tags}
+                avgRating={menu.avgRating}
+                views={menu.views}
+                about={menu.about}
+            />
+        {/each}
     {:else}
         {#each menus as menu}
             <CardHome
