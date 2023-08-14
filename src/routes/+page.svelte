@@ -15,6 +15,7 @@
     import type { menu } from "$lib/interfaces/menu";
     import { nowIdle, nowProcessing, state } from "$lib/stores/state";
     import type { PageData } from "./$types";
+    import FlyIn from "$lib/components/utils/FlyIn.svelte";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
@@ -126,105 +127,115 @@
     }
 </script>
 
-<div class="flex justify-center">
-    <div class="flex justify-center p-2.5 rounded-xl sm:w-3/5 bg-accent">
-        <input
-            type="text"
-            placeholder="Menu / User / Tag"
-            class="input input-bordered w-44 sm:w-auto flex-grow"
-            bind:value={searchKey}
-            on:keydown={handleKeypress}
-        />
-        <button
-            class="btn btn-neutral ml-1.5 text-base-200"
-            on:click|preventDefault={async () => {
-                if ($state === "idle") {
-                    nowProcessing();
-                    await handleSearch();
-                    nowIdle();
-                }
-            }}
-        >
-            {#if $state === "idle"}
-                Search
-            {:else if $state === "processing"}
-                <span class="loading loading-dots loading-md" />
+<FlyIn y={50} duration={500}>
+    <main>
+        <div class="flex justify-center">
+            <div
+                class="flex justify-center p-2.5 mb-1 rounded-xl sm:w-3/5 bg-accent"
+            >
+                <input
+                    type="text"
+                    placeholder="Menu / User / Tag"
+                    class="input input-bordered w-44 sm:w-auto flex-grow"
+                    bind:value={searchKey}
+                    on:keydown={handleKeypress}
+                />
+                <button
+                    class="btn btn-neutral ml-1.5 text-base-200"
+                    on:click|preventDefault={async () => {
+                        if ($state === "idle") {
+                            nowProcessing();
+                            await handleSearch();
+                            nowIdle();
+                        }
+                    }}
+                >
+                    {#if $state === "idle"}
+                        Search
+                    {:else if $state === "processing"}
+                        <span class="loading loading-dots loading-md" />
+                    {/if}
+                </button>
+            </div>
+        </div>
+
+        {#if searched && searchedMenus.length === 0}
+            <div class="text-center m-6 mt-20">
+                <p class="text-xl m-2">Cannot find any menu!</p>
+                <p class="text-xl m-2">Please try again!</p>
+            </div>
+        {/if}
+
+        <GridPrimary>
+            {#if searched}
+                {#each searchedMenus as menu}
+                    <FlyIn y={50} duration={500}>
+                        <CardHome
+                            uid={menu.uid}
+                            menuId={menu.menuId}
+                            menuImg={menu.menuImg}
+                            menuName={menu.menuName}
+                            userName={menu.userName}
+                            tags={menu.tags}
+                            avgRating={menu.avgRating}
+                            views={menu.views}
+                            about={menu.about}
+                        />
+                    </FlyIn>
+                {/each}
+            {:else}
+                {#each menus as menu}
+                    <CardHome
+                        uid={menu.uid}
+                        menuId={menu.menuId}
+                        menuImg={menu.menuImg}
+                        menuName={menu.menuName}
+                        userName={menu.userName}
+                        tags={menu.tags}
+                        avgRating={menu.avgRating}
+                        views={menu.views}
+                        about={menu.about}
+                    />
+                {/each}
             {/if}
-        </button>
-    </div>
-</div>
+        </GridPrimary>
 
-{#if searched && searchedMenus.length === 0}
-    <div class="text-center m-6 mt-20">
-        <p class="text-xl m-2">Cannot find any menu!</p>
-        <p class="text-xl m-2">Please try again!</p>
-    </div>
-{/if}
-
-<GridPrimary>
-    {#if searched}
-        {#each searchedMenus as menu}
-            <CardHome
-                uid={menu.uid}
-                menuId={menu.menuId}
-                menuImg={menu.menuImg}
-                menuName={menu.menuName}
-                userName={menu.userName}
-                tags={menu.tags}
-                avgRating={menu.avgRating}
-                views={menu.views}
-                about={menu.about}
-            />
-        {/each}
-    {:else}
-        {#each menus as menu}
-            <CardHome
-                uid={menu.uid}
-                menuId={menu.menuId}
-                menuImg={menu.menuImg}
-                menuName={menu.menuName}
-                userName={menu.userName}
-                tags={menu.tags}
-                avgRating={menu.avgRating}
-                views={menu.views}
-                about={menu.about}
-            />
-        {/each}
-    {/if}
-</GridPrimary>
-
-{#if searched}
-    <button
-        class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
-        on:click|preventDefault={async () => {
-            if ($state === "idle") {
-                nowProcessing();
-                await loadMoreSearchedMenu();
-                nowIdle();
-            }
-        }}
-    >
-        {#if $state === "idle"}
-            Load More Result
-        {:else if $state === "processing"}
-            <span class="loading loading-dots loading-md" />
+        {#if searched}
+            <FlyIn y={50} duration={500}>
+                <button
+                    class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
+                    on:click|preventDefault={async () => {
+                        if ($state === "idle") {
+                            nowProcessing();
+                            await loadMoreSearchedMenu();
+                            nowIdle();
+                        }
+                    }}
+                >
+                    {#if $state === "idle"}
+                        Load More Result
+                    {:else if $state === "processing"}
+                        <span class="loading loading-dots loading-md" />
+                    {/if}
+                </button>
+            </FlyIn>
+        {:else}
+            <button
+                class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
+                on:click|preventDefault={async () => {
+                    if ($state === "idle") {
+                        nowProcessing();
+                        await loadMoreHomeMenu();
+                        nowIdle();
+                    }
+                }}
+            >
+                {#if $state === "idle"}
+                    Load More Menu
+                {:else if $state === "processing"}
+                    <span class="loading loading-dots loading-md" />
+                {/if}
+            </button>
         {/if}
-    </button>
-{:else}
-    <button
-        class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
-        on:click|preventDefault={async () => {
-            if ($state === "idle") {
-                nowProcessing();
-                await loadMoreHomeMenu();
-                nowIdle();
-            }
-        }}
-    >
-        {#if $state === "idle"}
-            Load More Menu
-        {:else if $state === "processing"}
-            <span class="loading loading-dots loading-md" />
-        {/if}
-    </button>
-{/if}
+    </main>
+</FlyIn>

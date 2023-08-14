@@ -24,7 +24,7 @@
     export let givenRating: number | null;
 </script>
 
-<div
+<main
     class="card card-compact w-full h-fit p-4 md:p-8 border-2 bg-base-100 shadow-xl"
 >
     <div class="md:flex items-center h-fit">
@@ -150,4 +150,4 @@
             Please help us rate this menu from 0 to 10
         </h2>
     {/if}
-</div>
+</main>

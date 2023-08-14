@@ -25,7 +25,12 @@
 
 <div class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
     <div class="navbar-start">
-        <img alt="" src="/SharedRecipe_logo_v0.png" width="64" class=" rounded-lg"/>
+        <img
+            alt=""
+            src="/SharedRecipe_logo_v0.png"
+            width="64"
+            class=" rounded-lg"
+        />
         <a
             href="/"
             class="btn btn-ghost normal-case text-3xl"
@@ -101,9 +106,9 @@
     </div>
 </div>
 
-<div class="p-2 md:p-4">
+<main class="p-2 md:p-4">
     <slot />
-</div>
+</main>
 
 <footer class="footer footer-center p-12 mt-6 bg-secondary text-neutral-100">
     <div>

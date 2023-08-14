@@ -16,7 +16,7 @@
     export const favoritedBy: string[] = [];
 </script>
 
-<div
+<main
     class="card card-compact w-full h-full border-2 bg-base-100 shadow-xl overflow-auto"
 >
     {#if menuImg}
@@ -46,4 +46,4 @@
             <a href="/menu/{menuId}" class="btn btn-primary">explore</a>
         </div>
     </div>
-</div>
+</main>
