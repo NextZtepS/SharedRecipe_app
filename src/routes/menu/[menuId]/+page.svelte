@@ -2,14 +2,14 @@
     import CardMenu from "$lib/components/cards/CardMenu.svelte";
     import { user } from "$lib/firebase";
     import type { PageData } from "./$types";
-    import FlyIn from "$lib/components/utils/FlyIn.svelte";
+    import { fly } from "svelte/transition";
 
     export let data: PageData;
     const { menu } = data;
 </script>
 
-<FlyIn y={50} duration={500}>
-    <main class="p-6 md:px-8">
+<main in:fly={{ y: 50, duration: 500 }}>
+    <div class="p-6 md:px-8">
         {#if menu}
             {#if menu.visibility === "public"}
                 <CardMenu
@@ -43,5 +43,5 @@
                 <a class="btn btn-error mb-6" href="/">Return to Homepage</a>
             </div>
         {/if}
-    </main>
-</FlyIn>
+    </div>
+</main>

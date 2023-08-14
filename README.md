@@ -15,9 +15,10 @@ The key features on this application include:
 - improved database security (access-control and data validation via cloud function)
 - more secure statement management
 - new processing state indicator for UI
+- fly-in transition between pages
 
 ### Upcoming release (1.0.4)
-- to be determined
+- email notification on sign in
 
 ## Technology
 

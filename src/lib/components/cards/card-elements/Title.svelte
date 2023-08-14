@@ -8,7 +8,7 @@
     export let style: string = "";
 </script>
 
-<div class={style}>
+<main class={style}>
     <a href="/menu/{menuId}" class="card-title text-2xl">{menuName}</a>
 
     {#if userName}
@@ -24,4 +24,4 @@
     {/each}
 
     <slot />
-</div>
+</main>

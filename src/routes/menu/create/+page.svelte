@@ -3,7 +3,7 @@
     import { user } from "$lib/firebase";
     import { writeNewMenu } from "$lib/database-actions/writeNewMenu";
     import { nowIdle, nowProcessing, state } from "$lib/stores/state";
-    import FlyIn from "$lib/components/utils/FlyIn.svelte";
+    import { fly } from "svelte/transition";
 
     let numProcedure = 1;
     let numIngredient = 1;
@@ -21,9 +21,9 @@
     let visibility: "public" | "private" = "public";
 </script>
 
-<FlyIn y={50} duration={500}>
+<main in:fly={{ y: 50, duration: 500 }}>
     <AuthCheck>
-        <main class="p-6 md:px-8">
+        <div class="p-6 md:px-8">
             <form
                 class="card card-compact w-full h-full p-6 sm:p-10 border-2 bg-base-100 shadow-xl"
             >
@@ -188,6 +188,6 @@
                     {/if}
                 </button>
             </form>
-        </main>
+        </div>
     </AuthCheck>
-</FlyIn>
+</main>

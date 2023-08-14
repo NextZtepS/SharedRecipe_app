@@ -3,7 +3,7 @@
     export let views: number;
 </script>
 
-<div
+<main
     class="text-center p-3 rounded-md ring-2 ring-inset ring-secondary-focus bg-secondary"
 >
     {#if avgRating}
@@ -15,4 +15,4 @@
     {/if}
 
     <h2 class="text-base text-neutral-100">views: {views}</h2>
-</div>
+</main>

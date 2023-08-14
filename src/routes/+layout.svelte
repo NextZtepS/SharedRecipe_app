@@ -23,7 +23,7 @@
     }
 </script>
 
-<div class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
+<header class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
     <div class="navbar-start">
         <img
             alt=""
@@ -104,7 +104,7 @@
             </ul>
         </div>
     </div>
-</div>
+</header>
 
 <main class="p-2 md:p-4">
     <slot />

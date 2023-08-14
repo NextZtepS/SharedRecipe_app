@@ -4,8 +4,8 @@
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
     import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import { fly } from "svelte/transition";
     import type { PageData } from "./$types";
-    import FlyIn from "$lib/components/utils/FlyIn.svelte";
 
     export let data: PageData;
     const { menu } = data;
@@ -32,7 +32,7 @@
     let visibility: "public" | "private" = menu?.visibility ?? "private";
 </script>
 
-<FlyIn y={50} duration={500}>
+<main in:fly={{ y: 50, duration: 500 }}>
     {#if menu?.uid === $user?.uid}
         <div class="p-6 md:px-8">
             <form
@@ -43,7 +43,12 @@
                     <label class="label font-semibold"
                         >Upload the photo of the menu</label
                     >
-                    <img class="p-3" src={previewURL ?? ""} alt="" width="256" />
+                    <img
+                        class="p-3"
+                        src={previewURL ?? ""}
+                        alt=""
+                        width="256"
+                    />
                     <input
                         type="file"
                         class="file-input file-input-bordered w-full max-w-xs"
@@ -51,12 +56,14 @@
                         bind:files={Img}
                     />
                 </div>
-    
+
                 <div class="form-control w-full max-w-sm mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="label font-semibold">Menu name</label>
                     <div class="indicator">
-                        <span class="indicator-item badge badge-warning text-xs">
+                        <span
+                            class="indicator-item badge badge-warning text-xs"
+                        >
                             Required
                         </span>
                         <input
@@ -67,7 +74,7 @@
                         />
                     </div>
                 </div>
-    
+
                 <div class="form-control w-full max-w-lg mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="label font-semibold">Tag</label>
@@ -78,7 +85,7 @@
                         bind:value={tagString}
                     />
                 </div>
-    
+
                 <div class="form-control mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="label font-semibold">About</label>
@@ -88,11 +95,11 @@
                         bind:value={about}
                     />
                 </div>
-    
+
                 <div class="form-control mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="label font-semibold">Ingrediant</label>
-    
+
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="px-2 mb-2">
                         <label class="inline-flex text-sm">
@@ -105,7 +112,7 @@
                             bind:value={numIngredient}
                         />
                     </div>
-    
+
                     <div
                         class="grid gap-1.5 px-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
                     >
@@ -121,11 +128,11 @@
                         {/each}
                     </div>
                 </div>
-    
+
                 <div class="form-control mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="label font-semibold">Procedure</label>
-    
+
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="px-2 mb-2">
                         <label class="inline-flex text-sm">
@@ -137,7 +144,7 @@
                             bind:value={numProcedure}
                         />
                     </div>
-    
+
                     {#each Array(numProcedure) as _, index}
                         <!-- svelte-ignore a11y-label-has-associated-control -->
                         <label class="inline-flex text-sm mt-3 mb-1 ml-3">
@@ -150,7 +157,7 @@
                         />
                     {/each}
                 </div>
-    
+
                 <div class="flex align-middle px-2 mt-3">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="inline-flex text-md font-semibold mt-1">
@@ -164,7 +171,7 @@
                         <option value="private">Private</option>
                     </select>
                 </div>
-    
+
                 <button
                     class="form-control btn btn-success mx-auto mt-8"
                     on:click|preventDefault={async () => {
@@ -193,7 +200,7 @@
                         <span class="loading loading-dots loading-md" />
                     {/if}
                 </button>
-    
+
                 <button
                     class="form-control btn btn-error mx-auto mt-6"
                     on:click|preventDefault|once={async () => {
@@ -220,4 +227,4 @@
             <a class="btn btn-error mb-6" href="/">Return to Homepage</a>
         </div>
     {/if}
-</FlyIn>
+</main>
