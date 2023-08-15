@@ -13,6 +13,20 @@
         const user = await signInWithPopup(auth, provider);
     }
 
+    function createInitial(displayName: string): string {
+        const chunks = displayName.split(" ");
+        if (chunks.length === 0) {
+            return "";
+        } else if (chunks.length === 1) {
+            return chunks[0].substring(0, 1);
+        } else {
+            return (
+                chunks[0].substring(0, 1) +
+                chunks[chunks.length - 1].substring(0, 1)
+            );
+        }
+    }
+
     $user;
     $: if ($user) {
         writeUser($user);
@@ -61,13 +75,13 @@
                 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                 <label
                     tabindex="0"
-                    class="btn btn-ghost btn-circle avatar mt-1"
+                    class="btn btn-ghost btn-circle avatar align-middle border-accent"
                 >
                     {#if $user.photoURL}
                         <img class="rounded-full" src={$user.photoURL} alt="" />
                     {:else}
-                        <span class="rounded-full text-xl pb-1">
-                            {$user.displayName?.substring(0, 1)}
+                        <span class="text-xl">
+                            {createInitial($user.displayName ?? "👤")}
                         </span>
                     {/if}
                 </label>
