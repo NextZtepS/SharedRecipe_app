@@ -25,8 +25,8 @@ service cloud.firestore {
       return resource.data;
     }
 
-    function incomingData() {
-      return request.resource.data;
+    function incomingData(req) {
+      return req.resource.data;
     }
 
     function isSignIn() {
