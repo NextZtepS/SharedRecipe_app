@@ -12,11 +12,11 @@ export default {
             "dark",
             {
                 default: {
-                    "primary": "#617A55",
-                    "secondary": "#AA8B56",
-                    "accent": "#A4D0A4",
+                    "primary": "#617a55",
+                    "secondary": "#aa8b56",
+                    "accent": "#a4d0a4",
                     "neutral": "#3d4451",
-                    "base-100": "#F5F5F5",
+                    "base-100": "#f5f5f5",
                     "info": "#a0e5f3",
                     "success": "#38e5a9",    
                     "warning": "#ffca28",    
