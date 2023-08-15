@@ -2,14 +2,14 @@
     import CardUser from "$lib/components/cards/CardUser.svelte";
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
     import GridSecondary from "$lib/components/utils/GridSecondary.svelte";
-    import { fly } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
     import type { PageData } from "./$types";
 
     export let data: PageData;
     const { menus } = data;
 </script>
 
-<main in:fly={{ y: 50, duration: 500 }}>
+<main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
     <AuthCheck>
         <h2 class="text-3xl font-semibold font-serif ml-6 mt-4 mb-8">
             Your favorite menu:

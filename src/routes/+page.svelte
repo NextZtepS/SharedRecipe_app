@@ -15,7 +15,7 @@
     import type { menu } from "$lib/interfaces/menu";
     import { nowIdle, nowProcessing, state } from "$lib/stores/state";
     import type { PageData } from "./$types";
-    import { fly } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
 
     export let data: PageData;
     let { menus, lastDoc } = data;
@@ -127,7 +127,7 @@
     }
 </script>
 
-<main in:fly={{ y: 50, duration: 500, delay: 500 }}>
+<main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
     <div class="flex justify-center">
         <div
             class="flex justify-center p-2.5 mb-1 rounded-xl sm:w-3/5 bg-accent"
@@ -168,7 +168,7 @@
     <GridPrimary>
         {#if searched}
             {#each searchedMenus as menu}
-                <div in:fly={{ y: 50, duration: 500 }}>
+                <div in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
                     <CardHome
                         uid={menu.uid}
                         menuId={menu.menuId}
