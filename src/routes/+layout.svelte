@@ -63,11 +63,13 @@
                     tabindex="0"
                     class="btn btn-ghost btn-circle avatar mt-1"
                 >
-                    <img
-                        class="rounded-full"
-                        src={$user.photoURL}
-                        alt={$user.displayName?.substring(0, 1)}
-                    />
+                    {#if $user.photoURL}
+                        <img class="rounded-full" src={$user.photoURL} alt="" />
+                    {:else}
+                        <span class="rounded-full text-xl pb-1">
+                            {$user.displayName?.substring(0, 1)}
+                        </span>
+                    {/if}
                 </label>
             {/if}
             <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
