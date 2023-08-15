@@ -29,9 +29,12 @@
             >
                 <div class="form-control w-full max-w-xs mx-auto my-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
-                    <label class="label font-semibold"
-                        >Upload the photo of the menu</label
-                    >
+                    <label class="label font-semibold">
+                        Upload the photo of the menu
+                    </label>
+                    <span class="text-sm px-1.5">
+                        (4x3 ratio is recommended)
+                    </span>
                     <img
                         class="p-3"
                         src={previewURL ?? ""}
