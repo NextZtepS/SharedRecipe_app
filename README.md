@@ -10,12 +10,11 @@ The key features on this application include:
 - enjoying an immersive UI experience both on mobile and desktop
 
 ### Latest release (1.0.3)
-- optimized image url to improve loading performance
-- improved image viewport size
+- optimized image url and improved loading performance
 - improved database security (access-control and data validation via cloud function)
-- more secure statement management
+- more secure application statement management
 - new processing state indicator for UI
-- fly-in transition between pages
+- fly-in and fade-out transition between pages
 
 ### Upcoming release (1.0.4)
 - email notification on sign in
