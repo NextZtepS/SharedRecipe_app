@@ -32,6 +32,9 @@
       ]
     }
   ],
+  "extensions": {
+    "storage-resize-images": "firebase/storage-resize-images@0.1.39"
+  },
   "emulators": {
     "auth": {
       "port": 9099
@@ -46,8 +49,5 @@
       "enabled": true
     },
     "singleProjectMode": true
-  },
-  "extensions": {
-    "storage-resize-images": "firebase/storage-resize-images@0.1.39"
   }
 }
