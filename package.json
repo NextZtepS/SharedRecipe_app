@@ -2,9 +2,10 @@
 	"name": "sharedrecipe-app",
 	"version": "1.0.3",
 	"private": true,
+	"license": "UNLICENSED",
 	"type": "module",
 	"author": {
-		"name": "Next Ongarjvaja",
+		"name": "Natdanai (Next) Ongarjvaja",
 		"email": "natdanaiongarjvaja@gmail.com"
 	},
 	"contributors": [
