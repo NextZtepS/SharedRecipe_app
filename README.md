@@ -17,6 +17,7 @@ The key features on this application include:
 - fly-in and fade-out transition between pages
 
 ### Upcoming release (1.0.4)
+- sort options (date, views, rating, ...) for menu search
 - email notification on sign in
 
 ## Technology
