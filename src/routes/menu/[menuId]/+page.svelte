@@ -10,21 +10,24 @@
     export let data: PageData;
     let { menu } = data;
 
-    // reloading menu everytime the app enters "processing" state
     $: if ($state === "processing" && menu) {
         const docPath = doc(db, `menus/${menu.menuId}`);
-        getDoc(docPath)
-            .then((docSnapshot) => {
-                if (docSnapshot.exists()) {
-                    menu = docSnapshot.data() as menu;
-                    console.log("Successfully updating menu from the database!");
-                } else {
-                    console.log("Cannot find the updated menu!");
-                }
-            })
-            .catch((err) => {
-                console.error("Error reading from the database:", err);
-            });
+        setTimeout(async () => {
+            getDoc(docPath)
+                .then((docSnapshot) => {
+                    if (docSnapshot.exists()) {
+                        menu = docSnapshot.data() as menu;
+                        console.log(
+                            "Successfully updating menu from the database!"
+                        );
+                    } else {
+                        console.log("Cannot find the updated menu!");
+                    }
+                })
+                .catch((err) => {
+                    console.error("Error reading from the database:", err);
+                });
+        }, 100);
     }
 </script>
 
