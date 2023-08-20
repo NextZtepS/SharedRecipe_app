@@ -8,7 +8,7 @@ export async function handleAddToFavorite(menuId: string, uid: string) {
     try {
         await updateDoc(docPath, {
             favoritedBy: arrayUnion(uid),
-            lastedUpdated: serverTimestamp()
+            latestUpdated: serverTimestamp()
         });
     } catch (err) {
         successful = false;
@@ -27,7 +27,7 @@ export async function handleRemoveFromFavorite(menuId: string, uid: string) {
     try {
         await updateDoc(docPath, {
             favoritedBy: arrayRemove(uid),
-            lastedUpdated: serverTimestamp()
+            latestUpdated: serverTimestamp()
         });
     } catch (err) {
         successful = false;
