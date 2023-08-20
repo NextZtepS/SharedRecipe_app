@@ -27,7 +27,6 @@ export async function handleRate(
 
     if (successful) {
         console.log("Successfully updating menu's rating in the database!");
-        alert("Your rating has been received!");
-        window.location.replace(location.href);
+        // alert("Your rating has been received!");
     }
 }

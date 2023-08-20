@@ -79,7 +79,7 @@
                             on:click|preventDefault={async () => {
                                 if ($state === "idle") {
                                     nowProcessing();
-                                    handleAddToFavorite(
+                                    await handleAddToFavorite(
                                         menuId,
                                         $user?.uid ?? ""
                                     );

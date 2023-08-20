@@ -13,8 +13,9 @@ The key features on this application include:
 - optimized image url and improved loading performance
 - improved database security (access-control and data validation via cloud function)
 - more secure application statement management
-- new processing state indicator for UI
+- new processing state indicator for more declarative UI experience
 - fly-in and fade-out transition between pages
+- more instantaneous reative UI experience (remove unnecessary full-page reload on multiple site actions)
 
 ### Upcoming release (1.0.4)
 - sort options (date, views, rating, ...) for menu search

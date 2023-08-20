@@ -16,8 +16,7 @@ export async function handleAddToFavorite(menuId: string, uid: string) {
     }
     if (successful) {
         console.log("Successfully adding menu to user's favorite!");
-        alert("You have added this menu to your favorite!");
-        location.replace(location.href);
+        // alert("You have added this menu to your favorite!");
     }
 }
 
@@ -35,8 +34,7 @@ export async function handleRemoveFromFavorite(menuId: string, uid: string) {
         console.error("Error writing to the database:", err);
     }
     if (successful) {
-        alert("You have removed this menu from your favorite!");
         console.log("Successfully removing menu from user's favorite!");
-        window.location.replace(location.href);
+        // alert("You have removed this menu from your favorite!");
     }
 }
