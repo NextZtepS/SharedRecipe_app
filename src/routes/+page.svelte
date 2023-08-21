@@ -14,8 +14,8 @@
     import { db } from "$lib/firebase";
     import type { menu } from "$lib/interfaces/menu";
     import { state } from "$lib/stores/state";
-    import type { PageData } from "./$types";
     import { fade, fly } from "svelte/transition";
+    import type { PageData } from "./$types";
 
     export let data: PageData;
     let { menus, lastDoc } = data;

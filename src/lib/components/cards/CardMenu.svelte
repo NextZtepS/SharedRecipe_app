@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Title from "./card-elements/Title.svelte";
+    import Badge from "./card-elements/Badge.svelte";
     import { user } from "$lib/stores/user";
     import { state } from "$lib/stores/state";
     import {
@@ -6,8 +8,6 @@
         handleRemoveFromFavorite,
     } from "$lib/database-actions/handleFavorite";
     import { handleRate } from "$lib/database-actions/handleRate";
-    import Title from "./card-elements/Title.svelte";
-    import Badge from "./card-elements/Badge.svelte";
 
     export let uid: string;
     export let menuId: string;

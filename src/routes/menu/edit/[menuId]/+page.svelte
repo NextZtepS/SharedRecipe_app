@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { user } from "$lib/stores/user";
     import { reverseTagString } from "$lib/database-actions/utils/tags";
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
+    import { user } from "$lib/stores/user";
     import { state } from "$lib/stores/state";
     import { fly } from "svelte/transition";
     import type { PageData } from "./$types";

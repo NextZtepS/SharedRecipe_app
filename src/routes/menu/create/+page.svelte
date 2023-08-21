@@ -1,7 +1,7 @@
 <script lang="ts">
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
-    import { user } from "$lib/stores/user";
     import { writeNewMenu } from "$lib/database-actions/writeNewMenu";
+    import { user } from "$lib/stores/user";
     import { state } from "$lib/stores/state";
     import { fly } from "svelte/transition";
 

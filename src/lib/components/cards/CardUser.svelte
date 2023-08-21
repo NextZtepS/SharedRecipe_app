@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { user } from "$lib/stores/user";
     import Badge from "./card-elements/Badge.svelte";
     import Title from "./card-elements/Title.svelte";
+    import { user } from "$lib/stores/user";
 
     export let uid: string;
     export let menuId: string;
@@ -17,7 +17,9 @@
     export const favoritedBy: string[] = [];
 </script>
 
-<main class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl">
+<main
+    class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl"
+>
     <div class="md:flex items-center">
         {#if menuImg}
             <a href="/menu/{menuId}" class="card-image py-auto m-2">
