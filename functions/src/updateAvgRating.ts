@@ -10,13 +10,9 @@ export const updateAvgRatingFunc = onDocumentUpdated("menus/{menuId}", async (ev
     const previousRatings = previousDocument?.ratings;
     const newRatings = newDocument?.ratings;
     if (!areEquivalentObject(previousRatings, newRatings)) {
-        let avgRating: number;
         const ratings: number[] = Object.values(newRatings);
-        let ratingSum = 0;
-        for (let rating of ratings) {
-            ratingSum += rating;
-        }
-        avgRating = ratingSum / ratings.length;
+        const ratingSum = ratings.reduce((partialSum, rating) => partialSum + rating, 0);
+        const avgRating = ratingSum / ratings.length;
         try {
             await getFirestore().doc(`menus/${menuId}`).set({ avgRating: avgRating }, { merge: true });
             logger.info(`Successfully updating menu (menuId: ${menuId}) avgRating to ${avgRating}!`);
