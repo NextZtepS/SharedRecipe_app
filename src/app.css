@@ -7,3 +7,13 @@
     max-width: 400px;
     max-height: 300px;
 }
+
+.btn:hover {
+    transform: scale(1.05);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon:hover {
+    transform: scale(1.10);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

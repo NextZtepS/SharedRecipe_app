@@ -17,13 +17,13 @@
 </script>
 
 <main
-    class="card card-compact w-full h-full border-2 bg-base-100 shadow-xl overflow-auto"
+    class="card card-compact w-full h-full border-2 bg-base-100 shadow-xl overflow-auto hover:overflow-visible"
 >
     {#if menuImg}
     <div class="mx-auto">
         <a href="/menu/{menuId}" class="card-image h-auto">
             <img
-                class="object-cover max-h-fit max-w-fit hover:scale-105"
+                class="object-cover max-h-fit max-w-fit hover:scale-105 ease-in-out"
                 src={menuImg}
                 loading="lazy"
                 alt=""

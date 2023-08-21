@@ -52,7 +52,7 @@
             />
             <a
                 href="/"
-                class="btn btn-ghost normal-case text-3xl hover:scale-105 hover:bg-opacity-0"
+                class="btn btn-ghost normal-case text-3xl hover:bg-opacity-0"
                 on:click={forceReload}
             >
                 SharedRecipe
@@ -69,18 +69,18 @@
             {:else}
                 <button
                     on:click={signInWithGoogle}
-                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4 hover:scale-105"
+                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4"
                 >
                     Sign in
                 </button>
             {/if}
-            <div class="dropdown dropdown-end hover:scale-105">
+            <div class="dropdown dropdown-end">
                 {#if $user}
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <label
                         tabindex="0"
-                        class="btn btn-ghost btn-circle avatar align-middle border-accent"
+                        class="btn btn-ghost btn-circle avatar align-middle border-accent hover:border-accent"
                     >
                         {#if $user.photoURL}
                             <img
@@ -120,7 +120,7 @@
                         <li>
                             <button
                                 on:click={() => signOut(auth)}
-                                class="text-lg text-neutral"
+                                class="text-lg text-warning"
                             >
                                 Sign out
                             </button>
@@ -146,13 +146,28 @@
         <div>
             <div class="grid grid-flow-col gap-4">
                 <a href="mailto:natdanaiongarjvaja@gmail.com">
-                    <img alt="email" src="/icons/email.png" width="32" />
+                    <img
+                        alt="email"
+                        src="/icons/email.png"
+                        width="32"
+                        class="icon"
+                    />
                 </a>
                 <a href="https://github.com/NextZtepS/SharedRecipe-app">
-                    <img alt="github" src="/icons/github.png" width="32" />
+                    <img
+                        alt="github"
+                        src="/icons/github.png"
+                        width="32"
+                        class="icon"
+                    />
                 </a>
                 <a href="https://github.com/NextZtepS">
-                    <img alt="personal" src="/icons/user.png" width="32" />
+                    <img
+                        alt="personal"
+                        src="/icons/user.png"
+                        width="32"
+                        class="icon"
+                    />
                 </a>
             </div>
         </div>

@@ -18,13 +18,13 @@
 </script>
 
 <main
-    class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl"
+    class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl overflow-auto hover:overflow-visible"
 >
     <div class="md:flex items-center">
         {#if menuImg}
             <a href="/menu/{menuId}" class="card-image py-auto">
                 <img
-                    class="object-cover mx-auto max-h-fit max-w-fit hover:scale-105"
+                    class="object-cover mx-auto max-h-fit max-w-fit hover:scale-105 ease-in-out"
                     src={menuImg}
                     loading="lazy"
                     alt=""
