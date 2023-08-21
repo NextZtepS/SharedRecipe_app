@@ -14,5 +14,5 @@
         <h3 class="text-2xl text-neutral-100">-</h3>
     {/if}
 
-    <h2 class="text-base text-neutral-100">views: {views}</h2>
+    <h3 class="text-base text-neutral-100">views: {views}</h3>
 </main>
