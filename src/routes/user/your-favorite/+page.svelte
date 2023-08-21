@@ -2,7 +2,6 @@
     import CardUser from "$lib/components/cards/CardUser.svelte";
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
     import GridSecondary from "$lib/components/utils/GridSecondary.svelte";
-    import { user } from "$lib/stores/user"
     import { fade, fly } from "svelte/transition";
     import type { PageData } from "./$types";
 
@@ -11,7 +10,7 @@
 </script>
 
 <svelte:head>
-    <title>{$user?.displayName ?? "User"}'s Favorite on SharedRecipe</title>
+    <title>Your Favorite - SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>

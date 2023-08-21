@@ -5,8 +5,8 @@
     import { user } from "$lib/stores/user";
     import { state } from "$lib/stores/state";
     import { doc, getDoc } from "firebase/firestore";
-    import type { PageData } from "./$types";
     import { fly } from "svelte/transition";
+    import type { PageData } from "./$types";
 
     export let data: PageData;
     let { menu } = data;
@@ -33,7 +33,7 @@
 </script>
 
 <svelte:head>
-    <title>{menu?.menuName ?? "Menu"} on SharedRecipe</title>
+    <title>{menu?.menuName ?? "Menu"} - SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 500 }}>

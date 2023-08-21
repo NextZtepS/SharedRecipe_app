@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-    <title>Share Your Menu on SharedRecipe</title>
+    <title>Create Your Menu - SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 500 }}>

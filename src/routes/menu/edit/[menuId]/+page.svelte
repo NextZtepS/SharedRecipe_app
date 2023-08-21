@@ -33,7 +33,7 @@
 </script>
 
 <svelte:head>
-    <title>Editing {menu?.menuName ?? "Menu"} on SharedRecipe</title>
+    <title>{menu?.menuName ?? "Menu"} | Edit - SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 500 }}>
