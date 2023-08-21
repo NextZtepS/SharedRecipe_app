@@ -69,7 +69,7 @@
             {:else}
                 <button
                     on:click={signInWithGoogle}
-                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4"
+                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4 hover:scale-105"
                 >
                     Sign in
                 </button>
