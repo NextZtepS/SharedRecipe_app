@@ -12,7 +12,6 @@ The key features on this application include:
 ### Latest release (1.0.3)
 - optimized image url and improved loading performance
 - improved database security (access-control and data validation via cloud function)
-- more secure application statement management
 - new processing state indicator for more declarative UI experience
 - fly-in and fade-out transition between pages
 - more instantaneous reative UI experience (remove unnecessary full-page reload on multiple site actions)
