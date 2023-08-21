@@ -2,12 +2,17 @@
     import CardUser from "$lib/components/cards/CardUser.svelte";
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
     import GridSecondary from "$lib/components/utils/GridSecondary.svelte";
+    import { user } from "$lib/stores/user"
     import { fade, fly } from "svelte/transition";
     import type { PageData } from "./$types";
 
     export let data: PageData;
     const { menus } = data;
 </script>
+
+<svelte:head>
+    <title>{$user?.displayName}'s favorite on SharedRecipe</title>
+</svelte:head>
 
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
     <AuthCheck>

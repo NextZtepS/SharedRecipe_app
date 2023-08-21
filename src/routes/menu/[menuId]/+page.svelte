@@ -32,6 +32,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>{menu?.menuName ?? "Menu"} on SharedRecipe</title>
+</svelte:head>
+
 <main in:fly={{ y: 50, duration: 500 }}>
     <div class="p-6 md:px-8">
         {#key menu}

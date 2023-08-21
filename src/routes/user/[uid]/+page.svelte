@@ -9,6 +9,10 @@
     const { author, menus } = data;
 </script>
 
+<svelte:head>
+    <title>{author?.name} on SharedRecipe</title>
+</svelte:head>
+
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
     {#if author}
         <h2 class="text-3xl font-semibold font-serif ml-6 mt-4 mb-10">

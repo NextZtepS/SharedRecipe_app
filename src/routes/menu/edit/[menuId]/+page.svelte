@@ -32,6 +32,10 @@
     let visibility: "public" | "private" = menu?.visibility ?? "private";
 </script>
 
+<svelte:head>
+    <title>Editing {menu?.menuName ?? "Menu"} on SharedRecipe</title>
+</svelte:head>
+
 <main in:fly={{ y: 50, duration: 500 }}>
     {#if menu?.uid === $user?.uid}
         <div class="p-6 md:px-8">
