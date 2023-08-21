@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-    <title>{author?.name} on SharedRecipe</title>
+    <title>{author?.name ?? "User"} on SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>

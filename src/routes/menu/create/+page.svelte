@@ -21,6 +21,10 @@
     let visibility: "public" | "private" = "public";
 </script>
 
+<svelte:head>
+    <title>Share Your Menu on SharedRecipe</title>
+</svelte:head>
+
 <main in:fly={{ y: 50, duration: 500 }}>
     <AuthCheck>
         <div class="p-6 md:px-8">

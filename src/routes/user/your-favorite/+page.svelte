@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-    <title>{$user?.displayName}'s favorite on SharedRecipe</title>
+    <title>{$user?.displayName ?? "User"}'s Favorite on SharedRecipe</title>
 </svelte:head>
 
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
