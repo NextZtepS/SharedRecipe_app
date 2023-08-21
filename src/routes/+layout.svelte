@@ -41,15 +41,18 @@
 <div class="bg-base-200">
     <header class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
         <div class="navbar-start">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             <img
                 alt=""
                 src="/SharedRecipe_logo_v0.png"
                 width="64"
-                class=" rounded-lg"
+                class="rounded-lg hover:scale-105"
+                on:click={forceReload}
             />
             <a
                 href="/"
-                class="btn btn-ghost normal-case text-3xl"
+                class="btn btn-ghost normal-case text-3xl hover:scale-105 hover:bg-opacity-0"
                 on:click={forceReload}
             >
                 SharedRecipe
@@ -66,12 +69,12 @@
             {:else}
                 <button
                     on:click={signInWithGoogle}
-                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4"
+                    class="btn-ghost p-3 rounded-lg text-xl font-semibold mr-2 md:mr-3 lg:mr-4 hover:scale-105"
                 >
                     Sign in
                 </button>
             {/if}
-            <div class="dropdown dropdown-end">
+            <div class="dropdown dropdown-end hover:scale-105">
                 {#if $user}
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
