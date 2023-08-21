@@ -1,8 +1,8 @@
 <script lang="ts">
     import AuthCheck from "$lib/components/utils/AuthCheck.svelte";
-    import { user } from "$lib/firebase";
+    import { user } from "$lib/stores/user";
     import { writeNewMenu } from "$lib/database-actions/writeNewMenu";
-    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import { state } from "$lib/stores/state";
     import { fly } from "svelte/transition";
 
     let numProcedure = 1;
@@ -168,7 +168,7 @@
                     class="form-control btn btn-success mx-auto mt-8"
                     on:click|preventDefault={async () => {
                         if ($state === "idle") {
-                            nowProcessing();
+                            state.nowProcessing();
                             await writeNewMenu(
                                 Img,
                                 menuName,
@@ -180,7 +180,7 @@
                                 precedures,
                                 visibility
                             );
-                            nowIdle();
+                            state.nowIdle();
                         }
                     }}
                 >

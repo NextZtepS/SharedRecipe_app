@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { user } from "$lib/firebase";
-    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import { user } from "$lib/stores/user";
+    import { state } from "$lib/stores/state";
     import {
         handleAddToFavorite,
         handleRemoveFromFavorite,
@@ -58,12 +58,12 @@
                             class="btn btn-primary w-full"
                             on:click|preventDefault={async () => {
                                 if ($state === "idle") {
-                                    nowProcessing();
+                                    state.nowProcessing();
                                     await handleRemoveFromFavorite(
                                         menuId,
                                         $user?.uid ?? ""
                                     );
-                                    nowIdle();
+                                    state.nowIdle();
                                 }
                             }}
                         >
@@ -78,12 +78,12 @@
                             class="btn btn-primary w-full"
                             on:click|preventDefault={async () => {
                                 if ($state === "idle") {
-                                    nowProcessing();
+                                    state.nowProcessing();
                                     await handleAddToFavorite(
                                         menuId,
                                         $user?.uid ?? ""
                                     );
-                                    nowIdle();
+                                    state.nowIdle();
                                 }
                             }}
                         >
@@ -133,9 +133,9 @@
                 class="btn btn-primary px-6"
                 on:click|preventDefault={async () => {
                     if ($state === "idle") {
-                        nowProcessing();
+                        state.nowProcessing();
                         await handleRate(menuId, $user?.uid ?? "", givenRating);
-                        nowIdle();
+                        state.nowIdle();
                     }
                 }}
             >

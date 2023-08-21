@@ -1,7 +1,7 @@
 <script lang="ts">
     import CardUser from "$lib/components/cards/CardUser.svelte";
     import GridSecondary from "$lib/components/utils/GridSecondary.svelte";
-    import { user } from "$lib/firebase";
+    import { user } from "$lib/stores/user";
     import { fade, fly } from "svelte/transition";
     import type { PageData } from "./$types";
 

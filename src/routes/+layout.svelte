@@ -1,6 +1,7 @@
 <script lang="ts">
     import "../app.css";
-    import { auth, user } from "$lib/firebase";
+    import { auth } from "$lib/firebase";
+    import { user } from "$lib/stores/user";
     import {
         GoogleAuthProvider,
         signInWithPopup,

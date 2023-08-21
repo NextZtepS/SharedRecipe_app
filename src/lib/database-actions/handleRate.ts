@@ -6,8 +6,6 @@ export async function handleRate(
     uid: string,
     givenRating: number | null,
 ) {
-    let successful = true;
-
     if (!givenRating || givenRating < 0 || givenRating > 10) {
         alert("Please input a valid rating from 0 to 10!");
         return;
@@ -20,13 +18,9 @@ export async function handleRate(
     };
     try {
         await updateDoc(docPath, docData);
-    } catch (err) {
-        successful = false;
-        console.error("Error writing to the database:", err);
-    }
-
-    if (successful) {
         console.log("Successfully updating menu's rating in the database!");
         // alert("Your rating has been received!");
+    } catch (err) {
+        console.error("Error writing to the database:", err);
     }
 }

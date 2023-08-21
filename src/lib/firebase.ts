@@ -34,22 +34,3 @@ if (usingEmulators) {
     connectStorageEmulator(storage, "127.0.0.1", 9199);
     connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 }
-
-// Custom Store for Authenticated Firebase User 
-function userStore() {
-    let unsubscribe: () => void;
-
-    const { subscribe } = writable(auth?.currentUser ?? null, (set) => {
-        unsubscribe = onAuthStateChanged(auth, (user) => {
-            set(user);
-        });
-
-        return () => unsubscribe();
-    });
-
-    return {
-        subscribe
-    };
-}
-
-export const user = userStore();

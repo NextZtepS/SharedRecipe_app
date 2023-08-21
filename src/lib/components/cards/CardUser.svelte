@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { user } from "$lib/firebase";
+    import { user } from "$lib/stores/user";
     import Badge from "./card-elements/Badge.svelte";
     import Title from "./card-elements/Title.svelte";
 

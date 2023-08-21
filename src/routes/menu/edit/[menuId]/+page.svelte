@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { user } from "$lib/firebase";
+    import { user } from "$lib/stores/user";
     import { reverseTagString } from "$lib/database-actions/utils/tags";
     import { writeMenu } from "$lib/database-actions/writeMenu";
     import { deleteMenu } from "$lib/database-actions/deleteMenu";
-    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import { state } from "$lib/stores/state";
     import { fly } from "svelte/transition";
     import type { PageData } from "./$types";
 
@@ -179,7 +179,7 @@
                     class="form-control btn btn-success mx-auto mt-8"
                     on:click|preventDefault={async () => {
                         if ($state === "idle") {
-                            nowProcessing();
+                            state.nowProcessing();
                             await writeMenu(
                                 previewURL ?? "",
                                 Img,
@@ -193,7 +193,7 @@
                                 procedures,
                                 visibility
                             );
-                            nowIdle();
+                            state.nowIdle();
                         }
                     }}
                 >
@@ -208,9 +208,9 @@
                     class="form-control btn btn-error mx-auto mt-6"
                     on:click|preventDefault|once={async () => {
                         if ($state === "idle") {
-                            nowProcessing();
+                            state.nowProcessing();
                             await deleteMenu(menuId ?? "", $user?.uid ?? "");
-                            nowIdle();
+                            state.nowIdle();
                         }
                     }}
                 >

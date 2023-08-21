@@ -10,21 +10,24 @@ async function deleteFolder(ref: StorageReference): Promise<boolean> {
             try {
                 await deleteFolder(folderRef);
             }
-            catch {
+            catch (err) {
                 successful = false;
+                console.error("Error deleting folder from the database:", err);
             }
         }
         for (let itemRef of result.items) {
             try {
                 await deleteObject(itemRef);
             }
-            catch {
+            catch (err) {
                 successful = false;
+                console.error("Error deleting file from the database:", err);
             }
         }
     }
-    catch {
+    catch (err) {
         successful = false;
+        console.error("Error deleting folder from the database:", err);
     }
     return successful;
 }

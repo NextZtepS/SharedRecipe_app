@@ -13,7 +13,7 @@
     } from "firebase/firestore";
     import { db } from "$lib/firebase";
     import type { menu } from "$lib/interfaces/menu";
-    import { nowIdle, nowProcessing, state } from "$lib/stores/state";
+    import { state } from "$lib/stores/state";
     import type { PageData } from "./$types";
     import { fade, fly } from "svelte/transition";
 
@@ -87,9 +87,9 @@
         let keyPressed = e.key;
         if (keyPressed === "Enter") {
             if ($state === "idle") {
-                nowProcessing();
+                state.nowProcessing();
                 await handleSearch();
-                nowIdle();
+                state.nowIdle();
             }
         }
     }
@@ -143,9 +143,9 @@
                 class="btn btn-neutral ml-1.5 text-base-200"
                 on:click|preventDefault={async () => {
                     if ($state === "idle") {
-                        nowProcessing();
+                        state.nowProcessing()
                         await handleSearch();
-                        nowIdle();
+                        state.nowIdle();
                     }
                 }}
             >
@@ -205,9 +205,9 @@
                 class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
                 on:click|preventDefault={async () => {
                     if ($state === "idle") {
-                        nowProcessing();
+                        state.nowProcessing()
                         await loadMoreSearchedMenu();
-                        nowIdle();
+                        state.nowIdle();
                     }
                 }}
             >
@@ -223,9 +223,9 @@
             class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
             on:click|preventDefault={async () => {
                 if ($state === "idle") {
-                    nowProcessing();
+                    state.nowProcessing();
                     await loadMoreHomeMenu();
-                    nowIdle();
+                    state.nowIdle();
                 }
             }}
         >
