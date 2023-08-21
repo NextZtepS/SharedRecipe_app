@@ -10,7 +10,6 @@ export const updateAvgRatingFunc = onDocumentUpdated("menus/{menuId}", async (ev
     const previousRatings = previousDocument?.ratings;
     const newRatings = newDocument?.ratings;
     if (!areEquivalentObject(previousRatings, newRatings)) {
-        let successful = true;
         let avgRating: number;
         const ratings: number[] = Object.values(newRatings);
         let ratingSum = 0;
@@ -20,20 +19,15 @@ export const updateAvgRatingFunc = onDocumentUpdated("menus/{menuId}", async (ev
         avgRating = ratingSum / ratings.length;
         try {
             await getFirestore().doc(`menus/${menuId}`).set({ avgRating: avgRating }, { merge: true });
-        } catch (err) {
-            successful = false;
-            logger.error("Error updating menu avgRating:", err);
-        }
-
-        if (successful) {
             logger.info(`Successfully updating menu (menuId: ${menuId}) avgRating to ${avgRating}!`);
+        } catch (err) {
+            logger.error("Error updating menu avgRating:", err);
         }
         return null;
     } else {
         return null;
     }
 });
-
 
 function areEquivalentObject(object1: any, object2: any): boolean {
     const keys1 = Object.keys(object1);
@@ -48,4 +42,3 @@ function areEquivalentObject(object1: any, object2: any): boolean {
     }
     return true;
 }
- 
