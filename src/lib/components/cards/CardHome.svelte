@@ -39,10 +39,10 @@
                 <Badge {avgRating} {views} />
             </div>
 
-            <p class="mt-4 mb-2 text-base">{about.substring(0, 300)}</p>
+            <p class="mt-4 mb-2 text-base">{about.substring(0, 250)}</p>
         </div>
 
-        <div class="card-actions justify-center mx-auto mt-auto mb-4">
+        <div class="card-actions justify-center mx-auto mt-auto mb-3">
             <a href="/menu/{menuId}" class="btn btn-primary">explore</a>
         </div>
     </div>

@@ -35,7 +35,7 @@
         <div class="flex flex-auto items-center mt-2">
             <Title style="p-2 md:ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
                 <p class="text-base mt-2">
-                    {about.substring(0, 300) ?? ""}
+                    {about.substring(0, 250) ?? ""}
                 </p>
             </Title>
 
