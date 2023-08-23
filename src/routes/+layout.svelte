@@ -131,7 +131,7 @@
         </div>
     </header>
 
-    <main class="p-2 md:p-4">
+    <main class="p-2 lg:p-4 mx-auto">
         <slot />
     </main>
 
@@ -173,3 +173,9 @@
         </div>
     </footer>
 </div>
+
+<style>
+    main {
+        width: 95%;
+    }
+</style>

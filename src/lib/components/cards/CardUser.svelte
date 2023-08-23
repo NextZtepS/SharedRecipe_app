@@ -24,7 +24,7 @@
         {#if menuImg}
             <a href="/menu/{menuId}" class="card-image py-auto">
                 <img
-                    class="object-cover rounded-lg mx-auto max-h-fit max-w-fit hover:scale-105 ease-in-out"
+                    class="object-cover rounded-lg mx-auto hover:scale-105 ease-in-out"
                     src={menuImg}
                     loading="lazy"
                     alt=""
@@ -54,3 +54,10 @@
         </div>
     </div>
 </main>
+
+<style>
+    img {
+        width: 450px;
+        height: 300px;
+    }
+</style>

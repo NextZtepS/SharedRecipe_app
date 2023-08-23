@@ -23,7 +23,7 @@
     <div class="mx-auto">
         <a href="/menu/{menuId}" class="card-image h-auto">
             <img
-                class="object-cover max-h-fit max-w-fit hover:scale-105 ease-in-out"
+                class="object-cover hover:scale-105 ease-in-out"
                 src={menuImg}
                 loading="lazy"
                 alt=""
@@ -47,3 +47,10 @@
         </div>
     </div>
 </main>
+
+<style>
+    img {
+        width: auto;
+        height: 300px;
+    }
+</style>

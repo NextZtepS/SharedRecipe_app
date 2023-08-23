@@ -151,3 +151,10 @@
         </h2>
     {/if}
 </main>
+
+<style>
+    img {
+        width: 300px;
+        height: 200px;
+    }
+</style>
