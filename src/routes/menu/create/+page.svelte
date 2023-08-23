@@ -37,7 +37,7 @@
                         Upload the photo of the menu
                     </label>
                     <span class="text-sm px-1.5">
-                        (16x9 ratio is recommended)
+                        (3x2 ratio is recommended)
                     </span>
                     <img
                         class="p-3"
