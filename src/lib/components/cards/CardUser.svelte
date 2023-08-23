@@ -20,11 +20,11 @@
 <main
     class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl overflow-auto hover:overflow-visible"
 >
-    <div class="md:flex items-center">
+    <div class="md:flex items-center my-auto">
         {#if menuImg}
             <a href="/menu/{menuId}" class="card-image py-auto">
                 <img
-                    class="object-cover mx-auto max-h-fit max-w-fit hover:scale-105 ease-in-out"
+                    class="object-cover rounded-lg mx-auto max-h-fit max-w-fit hover:scale-105 ease-in-out"
                     src={menuImg}
                     loading="lazy"
                     alt=""
@@ -35,7 +35,7 @@
         <div class="flex flex-auto items-center mt-2">
             <Title style="p-2 md:ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
                 <p class="text-base mt-2">
-                    {about.substring(0, 250) ?? ""}
+                    {about.substring(0, 300) ?? ""}
                 </p>
             </Title>
 
