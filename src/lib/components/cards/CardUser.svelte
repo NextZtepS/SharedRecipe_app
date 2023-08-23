@@ -24,7 +24,7 @@
         {#if menuImg}
             <a href="/menu/{menuId}">
                 <img
-                    class="object-cover flex-auto rounded-lg mx-auto hover:scale-105 ease-in-out"
+                    class="object-cover flex-auto rounded-2xl mx-auto hover:scale-105 ease-in-out"
                     src={menuImg}
                     loading="lazy"
                     alt=""

@@ -23,7 +23,7 @@
     <div class="mx-auto">
         <a href="/menu/{menuId}">
             <img
-                class="object-cover hover:scale-105 ease-in-out"
+                class="object-cover hover:scale-105 hover:rounded-2xl ease-in-out"
                 src={menuImg}
                 loading="lazy"
                 alt=""

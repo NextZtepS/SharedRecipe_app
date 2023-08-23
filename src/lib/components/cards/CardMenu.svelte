@@ -30,7 +30,7 @@
     <div class="md:flex items-center h-fit">
         {#if menuImg}
             <img
-                class="object-cover rounded-lg ml-2 my-2 mr-auto"
+                class="object-cover rounded-2xl ml-2 my-2 mr-auto"
                 src={menuImg}
                 loading="lazy"
                 alt=""
