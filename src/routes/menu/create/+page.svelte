@@ -43,7 +43,7 @@
                         class="p-3"
                         src={previewURL ?? ""}
                         alt=""
-                        width="256"
+                        width="300"
                     />
                     <input
                         type="file"
