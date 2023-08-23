@@ -30,16 +30,16 @@
     <div class="md:flex items-center h-fit">
         {#if menuImg}
             <img
-                class="card-image object-cover p-2 mx-auto"
+                class="object-cover rounded-lg ml-2 my-2 mr-auto"
                 src={menuImg}
                 loading="lazy"
                 alt=""
             />
         {/if}
 
-        <div class="flex flex-auto items-center p-2">
+        <div class="flex flex-auto items-center ml-2 p-2">
             <Title
-                style="ml-2 mr-auto "
+                style="ml-2 mr-auto"
                 {uid}
                 {menuId}
                 {menuName}
@@ -154,7 +154,7 @@
 
 <style>
     img {
-        width: 300px;
+        width: auto;
         height: 200px;
     }
 </style>

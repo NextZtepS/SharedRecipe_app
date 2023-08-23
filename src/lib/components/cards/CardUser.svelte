@@ -22,9 +22,9 @@
 >
     <div class="md:flex items-center my-auto">
         {#if menuImg}
-            <a href="/menu/{menuId}" class="card-image py-auto">
+            <a href="/menu/{menuId}">
                 <img
-                    class="object-cover rounded-lg mx-auto hover:scale-105 ease-in-out"
+                    class="object-cover flex-auto rounded-lg mx-auto hover:scale-105 ease-in-out"
                     src={menuImg}
                     loading="lazy"
                     alt=""
@@ -32,7 +32,7 @@
             </a>
         {/if}
 
-        <div class="flex flex-auto items-center mt-2">
+        <div class="flex flex-1 items-center mt-2">
             <Title style="p-2 md:ml-2 mr-auto" {uid} {menuId} {menuName} {tags}>
                 <p class="text-base mt-2">
                     {about.substring(0, 300) ?? ""}
@@ -57,7 +57,7 @@
 
 <style>
     img {
-        width: 450px;
-        height: 300px;
+        width: auto;
+        height: 200px;
     }
 </style>

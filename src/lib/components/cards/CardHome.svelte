@@ -21,7 +21,7 @@
 >
     {#if menuImg}
     <div class="mx-auto">
-        <a href="/menu/{menuId}" class="card-image h-auto">
+        <a href="/menu/{menuId}">
             <img
                 class="object-cover hover:scale-105 ease-in-out"
                 src={menuImg}
@@ -51,6 +51,6 @@
 <style>
     img {
         width: auto;
-        height: 300px;
+        height: 350px;
     }
 </style>

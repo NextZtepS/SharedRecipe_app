@@ -131,7 +131,7 @@
         </div>
     </header>
 
-    <main class="p-2 lg:p-4 mx-auto">
+    <main class="p-3 mx-auto">
         <slot />
     </main>
 
