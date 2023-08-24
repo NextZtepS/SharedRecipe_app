@@ -39,7 +39,7 @@
 </script>
 
 <div class="bg-base-200">
-    <header class="navbar bg-primary px-12 py-9 mb-6 text-neutral-100">
+    <header class="navbar bg-primary px-8 py-6 md:px-12 md:py-9 mb-6 text-neutral-100">
         <div class="navbar-start">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -52,7 +52,7 @@
             />
             <a
                 href="/"
-                class="btn btn-ghost normal-case text-3xl hover:bg-opacity-0"
+                class="invisible md:visible btn btn-ghost normal-case text-3xl hover:bg-opacity-0"
                 on:click={forceReload}
             >
                 SharedRecipe
@@ -173,9 +173,3 @@
         </div>
     </footer>
 </div>
-
-<style>
-    main {
-        width: 95%;
-    }
-</style>
