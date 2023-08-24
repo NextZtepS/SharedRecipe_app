@@ -113,11 +113,11 @@
         </div>
 
         <h2 class="card-title text-2xl mt-4">Procedure</h2>
-        <ul>
+        <ol>
             {#each Object.entries(procedures) as [key, procedure]}
                 <li class="text-lg mb-3">{key}) {procedure}</li>
             {/each}
-        </ul>
+        </ol>
     </div>
 
     {#if $user}

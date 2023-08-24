@@ -39,7 +39,7 @@
 </script>
 
 <div class="bg-base-200">
-    <header class="navbar bg-primary px-8 py-6 md:px-12 md:py-9 mb-6 text-neutral-100">
+    <header class="navbar bg-primary px-8 py-6 md:px-12 md:py-9 mb-4 md:mb-6 text-neutral-100">
         <div class="navbar-start">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -131,12 +131,12 @@
         </div>
     </header>
 
-    <main class="p-3 mx-auto">
+    <main class="p-2.5 md:p-4 mx-auto">
         <slot />
     </main>
 
     <footer
-        class="footer footer-center p-12 mt-6 bg-secondary text-neutral-100"
+        class="footer footer-center p-9 md:p-12 mt-4 md:mt-6 bg-secondary text-neutral-100"
     >
         <div>
             <p class="font-bold">
