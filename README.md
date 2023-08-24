@@ -18,6 +18,7 @@ The key features on this application include:
 
 ### Upcoming release (1.0.4)
 - sort options (date, views, rating, ...) for menu search
+- email & password sign in option
 - email notification on sign in
 
 ## Technology
