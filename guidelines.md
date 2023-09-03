@@ -17,7 +17,7 @@ A contributor who intentionally causes deleterious action will be hold responsib
 - The development team is a open-minded community which emphasizes on freedom of ideas.
 - Every member of the development team promises to support one another in a positive manner.
 
-### Foundamental steps to start contributing to SharedRecipe
+### Fundamental steps to start contributing to SharedRecipe
 - fork the SharedRecipe_app repository to submit a pull request later on [guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 - install node v18.17.0 and npm v9.6.7 (using nvm is recommended) [guide](https://www.youtube.com/watch?v=AEuI0PBvgfM)
 - run "npm install" in the root directory of the project to download the dependencies
@@ -26,3 +26,9 @@ A contributor who intentionally causes deleterious action will be hold responsib
 - run "firebase init emulators" to setup Firebase emulators for auth, functions, firestore, and storage [guide](https://www.youtube.com/watch?v=pkgvFNPdiEs&t=26s)
 - run "firebase emulators:start --only firestore,storage,auth,functions" to start working locally with Firebase
 - run "npm run dev" to develop the app on localhost
+
+### Related Tool Documentations
+- https://svelte.dev
+- https://firebase.google.com/docs
+- https://tailwindcss.com/docs/
+- https://daisyui.com/docs/use/
