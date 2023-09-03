@@ -12,7 +12,7 @@ A contributor who intentionally causes deleterious action will be hold responsib
 - SharedRecipe welcomes anyone who wants to share their passion in food and cooking with the other.
 - SharedRecipe does not accept discriminated content of any form, including hatred, racism, etc.
 
-## Developemnt Team
+## Development Team
 
 - The development team is a open-minded community which emphasizes on freedom of ideas.
 - Every member of the development team promises to support one another in a positive manner.
