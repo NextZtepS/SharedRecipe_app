@@ -1,4 +1,4 @@
-# Guideline for contributing to SharedRecipe
+# Guidelines for contributing to SharedRecipe
 
 ## Mischevious Action
 
@@ -6,7 +6,7 @@ The infrastructure of this application is tied to the account belonged to Natdan
 With that being said, a deleterious action caused by mistake any other means shall be prone to direct lost of benifit of the owner.  
 A contributor who intentionally causes deleterious action will be hold responsible. Other minor mistakes shall be considered case by case.  
 
-## Mission of SharedRecipe
+## Missions of SharedRecipe
 
 - SharedRecipe development team promises to serve a safe and accessible web application experince to every user.
 - SharedRecipe welcomes anyone who wants to share their passion in food and cooking with the other.
@@ -17,10 +17,12 @@ A contributor who intentionally causes deleterious action will be hold responsib
 - The development team is a open-minded community which emphasizes on freedom of ideas.
 - Every member of the development team promises to support one another in a positive manner.
 
-### Basic guidelines for contributing to SharedRecipe
-- fork the SharedRecipe_app repository to submit a pull request later on
-- install node v18.17.0 and npm v9.6.7
-- install the lastest verion of Firebase SDKs (firebase-tools) 
+### Foundamental steps to start contributing to SharedRecipe
+- fork the SharedRecipe_app repository to submit a pull request later on [guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+- install node v18.17.0 and npm v9.6.7 (using nvm is recommended) [guide](https://www.youtube.com/watch?v=AEuI0PBvgfM)
+- > "npm install" in the rood directory of the project to download all of the dependencies
+- install the lastest verion of Firebase command line tools [guide](https://firebase.google.com/docs/cli#mac-linux-npm)
 - ensure that "usingEmulators" is set to "true" in [firebase.ts](src/lib/firebase.ts)
-- setup and start Firebase emulators (auth, firestore, storage)
-- use "npm run dev" to work on the development localhost
+- run "firebase init emulators" to setup Firebase emulators for auth, functions, firestore, and storage [guide](https://www.youtube.com/watch?v=pkgvFNPdiEs&t=26s)
+- > "firebase emulators:start --only firestore,storage,auth,functions" to start working locally with Firebase
+- > "npm run dev" to develop the app on localhost

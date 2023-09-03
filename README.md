@@ -29,4 +29,4 @@ The codebase is implemented in Svelte and Typescripts.
 Back-end infrastructure is supported by Firebase services, including: Authentication, Firestore Database, Storage, Hosting, and Functions.  
 Styling in this app is implemented using Tailwind CSS with DaisyUI plugin.  
 
-## Please refer to [guideline](guideline.md) for more details about project contribution
+## Please refer to [guidelines](guidelines.md) for more details about project contribution
