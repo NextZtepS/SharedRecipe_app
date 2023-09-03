@@ -18,7 +18,7 @@ A contributor who intentionally causes deleterious action will be hold responsib
 - Every member of the development team promises to support one another in a positive manner.
 
 ### Fundamental steps to start contributing to SharedRecipe
-- fork the SharedRecipe_app repository to submit a pull request later on [guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+- fork the "feature" branch of SharedRecipe_app repository to submit a pull request later on [guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 - install node v18.17.0 and npm v9.6.7 (using nvm is recommended) [guide](https://www.youtube.com/watch?v=AEuI0PBvgfM)
 - run "npm install" in the root directory of the project to download the dependencies
 - install the lastest verion of Firebase command line tools [guide](https://firebase.google.com/docs/cli#mac-linux-npm)
