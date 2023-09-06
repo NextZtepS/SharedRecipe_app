@@ -29,6 +29,7 @@
     let numProcedure: string | number = Object.keys(procedures).slice(-1)[0];
     if (numProcedure) numProcedure = +numProcedure;
     else numProcedure = 1;
+    let references = menu?.references;
     let visibility: "public" | "private" = menu?.visibility ?? "private";
 </script>
 
@@ -165,6 +166,16 @@
                     {/each}
                 </div>
 
+                <div class="form-control mb-4">
+                    <!-- svelte-ignore a11y-label-has-associated-control -->
+                    <label class="label font-semibold">References</label>
+                    <textarea
+                        class="textarea textarea-bordered h-16"
+                        placeholder="Please include your references or leave blank"
+                        bind:value={references}
+                    />
+                </div>
+
                 <div class="flex align-middle px-2 mt-3">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="inline-flex text-md font-semibold mt-1">
@@ -195,6 +206,7 @@
                                 about ?? "",
                                 ingredients,
                                 procedures,
+                                references ?? "",
                                 visibility
                             );
                             state.nowIdle();

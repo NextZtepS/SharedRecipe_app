@@ -20,6 +20,7 @@
     export let about: string;
     export let ingredients: { [key: number]: string } = {};
     export let procedures: { [key: number]: string } = {};
+    export let references: string;
     export let favoritedBy: string[] = [];
     export let givenRating: number | null;
 </script>
@@ -118,6 +119,9 @@
                 <li class="text-lg mb-3">{key}) {procedure}</li>
             {/each}
         </ol>
+
+        <h2 class="card-title text-2xl mt-4 mb-2">References</h2>
+        <p class="card-normal text-lg">{references}</p>
     </div>
 
     {#if $user}

@@ -18,6 +18,7 @@
     let about: string = "";
     let ingredients: { [key: number]: string } = {};
     let precedures: { [key: number]: string } = {};
+    let references: string = "";
     let visibility: "public" | "private" = "public";
 </script>
 
@@ -154,6 +155,16 @@
                     {/each}
                 </div>
 
+                <div class="form-control mb-4">
+                    <!-- svelte-ignore a11y-label-has-associated-control -->
+                    <label class="label font-semibold">References</label>
+                    <textarea
+                        class="textarea textarea-bordered h-16"
+                        placeholder="Please include your references or leave blank"
+                        bind:value={references}
+                    />
+                </div>
+
                 <div class="flex align-middle px-2 mt-3">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <label class="inline-flex text-md font-semibold mt-1">
@@ -182,6 +193,7 @@
                                 about,
                                 ingredients,
                                 precedures,
+                                references,
                                 visibility
                             );
                             state.nowIdle();

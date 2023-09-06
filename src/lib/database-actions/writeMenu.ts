@@ -15,6 +15,7 @@ export async function writeMenu(
     about: string,
     ingredients: { [key: number]: string },
     procedures: { [key: number]: string },
+    references: string,
     visibility: "public" | "private",
 ) {
     let successful = true;
@@ -56,6 +57,7 @@ export async function writeMenu(
             userName ?? "",
             handleTagString(tagString)
         ),
+        references: references ?? "",
         visibility: visibility,
     };
 

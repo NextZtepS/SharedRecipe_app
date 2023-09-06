@@ -53,6 +53,7 @@
                         about={menu.about}
                         ingredients={menu.ingredients}
                         procedures={menu.procedures}
+                        references={menu.references}
                         favoritedBy={menu.favoritedBy}
                         givenRating={menu.ratings[$user?.uid ?? ""]}
                     />

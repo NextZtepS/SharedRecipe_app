@@ -11,6 +11,7 @@ export interface menu {
     about: string,
     ingredients: { [key: number]: string },
     procedures: { [key: number]: string },
+    references: string,
     visibility: "public" | "private",
     ratings: { [key: string]: number },
     avgRating: number | null,

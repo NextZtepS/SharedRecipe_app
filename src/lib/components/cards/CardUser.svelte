@@ -14,6 +14,7 @@
     export let about: string;
     export const ingredients = {};
     export const procedures = {};
+    export const references = "";
     export const favoritedBy: string[] = [];
 </script>
 
