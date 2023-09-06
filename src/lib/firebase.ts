@@ -26,7 +26,7 @@ export const storage = getStorage(app);
 export const functions = getFunctions(app);
 
 //* please select the appropriate mode before running the application
-const usingEmulators = true;
+const usingEmulators = false;
 if (usingEmulators) {
     connectAuthEmulator(auth, "http://127.0.0.1:9099");
     connectFirestoreEmulator(db, "127.0.0.1", 8080);

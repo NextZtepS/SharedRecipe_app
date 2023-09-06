@@ -69,7 +69,7 @@
                             }}
                         >
                             {#if $state === "idle"}
-                                Remove from ♡
+                                Remove from ♥︎
                             {:else if $state === "processing"}
                                 <span class="loading loading-dots loading-md" />
                             {/if}
@@ -89,7 +89,7 @@
                             }}
                         >
                             {#if $state === "idle"}
-                                Add to ♡
+                                Add to ♥︎
                             {:else if $state === "processing"}
                                 <span class="loading loading-dots loading-md" />
                             {/if}
@@ -120,8 +120,10 @@
             {/each}
         </ol>
 
-        <h2 class="card-title text-2xl mt-4 mb-2">References</h2>
-        <p class="card-normal text-lg">{references}</p>
+        {#if references}
+            <h2 class="card-title text-2xl mt-4 mb-2">References</h2>
+            <p class="card-normal text-lg">{references}</p>
+        {/if}
     </div>
 
     {#if $user}
