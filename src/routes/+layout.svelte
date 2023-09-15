@@ -1,6 +1,6 @@
 <script lang="ts">
     import "../app.css";
-    import { auth } from "$lib/firebase";
+    import { auth, prepareFirebase } from "$lib/firebase";
     import { user } from "$lib/stores/user";
     import {
         GoogleAuthProvider,
@@ -8,6 +8,11 @@
         signOut,
     } from "firebase/auth";
     import { writeUser } from "$lib/database-actions/writeUser";
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        prepareFirebase();
+    })
 
     async function signInWithGoogle() {
         const provider = new GoogleAuthProvider();

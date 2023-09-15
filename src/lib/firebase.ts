@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "@firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { connectAuthEmulator, getAuth } from "firebase/auth";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 import { connectStorageEmulator, getStorage } from "firebase/storage";
 import { connectFunctionsEmulator, getFunctions } from "firebase/functions"
+import { getAnalytics } from "firebase/analytics";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
@@ -19,14 +21,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const functions = getFunctions(app);
+export function prepareFirebase() {
+    if (!window.location.href.includes("localhost")) {
+        const analytics = getAnalytics(app);
+        const appCheck = initializeAppCheck(app, {
+            provider: new ReCaptchaV3Provider("6LfRcSooAAAAAD6wB0T2NYzkskW0FkG5s125rT5p"),
+            isTokenAutoRefreshEnabled: true
+        });
+    }
+}
 
 //* please select the appropriate mode before running the application
-const usingEmulators = true;
+const usingEmulators = false;
 if (usingEmulators) {
     connectAuthEmulator(auth, "http://127.0.0.1:9099");
     connectFirestoreEmulator(db, "127.0.0.1", 8080);
