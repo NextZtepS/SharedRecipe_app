@@ -1,4 +1,4 @@
-# SharedRecipe [link](https://shared-recipe.web.app)
+# SharedRecipe [link](https://shared-recipe.firebaseapp.com/)
 
 SharedRecipe is an online web application in which cooking enthusiasts come and share their beloved recipes.  
   
