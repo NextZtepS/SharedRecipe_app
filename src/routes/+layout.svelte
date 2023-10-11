@@ -136,7 +136,7 @@
         </div>
     </header>
 
-    <main class="p-2.5 md:p-4 mx-auto">
+    <main class="p-2 md:p-4 mx-auto">
         <slot />
     </main>
 

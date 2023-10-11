@@ -19,7 +19,7 @@
 </script>
 
 <main
-    class="card card-compact w-full h-full p-4 md:p-6 border-2 bg-base-100 shadow-xl overflow-auto hover:overflow-visible"
+    class="card card-compact w-full h-full p-3 md:p-6 border-2 bg-base-100 shadow-xl overflow-auto hover:overflow-visible"
 >
     <div class="md:flex items-center my-auto">
         {#if menuImg}
