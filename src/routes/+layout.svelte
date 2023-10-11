@@ -50,7 +50,7 @@
             <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             <img
                 alt=""
-                src="/SharedRecipe_logo_v0.png"
+                src="/logos/SharedRecipe_logo_v1_resized.png"
                 width="64"
                 class="rounded-lg hover:scale-105"
                 on:click={forceReload}
