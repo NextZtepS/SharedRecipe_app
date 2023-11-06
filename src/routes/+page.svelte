@@ -143,7 +143,7 @@
                 class="btn btn-neutral ml-1.5 text-base-200"
                 on:click|preventDefault={async () => {
                     if ($state === "idle") {
-                        state.nowProcessing()
+                        state.nowProcessing();
                         await handleSearch();
                         state.nowIdle();
                     }
@@ -205,7 +205,7 @@
                 class="btn btn-accent flex mx-auto w-48 md:w-72 mt-4"
                 on:click|preventDefault={async () => {
                     if ($state === "idle") {
-                        state.nowProcessing()
+                        state.nowProcessing();
                         await loadMoreSearchedMenu();
                         state.nowIdle();
                     }
