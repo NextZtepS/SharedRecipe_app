@@ -1,5 +1,4 @@
-import type { Unsubscriber } from "svelte/motion";
-import { writable, type Writable } from "svelte/store";
+import { writable, type Writable, type Unsubscriber } from "svelte/store";
 
 type possibleState = "idle" | "processing";
 interface stateStore {
