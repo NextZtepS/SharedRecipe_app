@@ -74,11 +74,11 @@ export async function writeNewMenu(
         }
 
         try {
-            const addtionalData = {
+            const additionalData = {
                 menuId: menuId,
                 menuImg: url ?? null,
             };
-            await setDoc(docRef, addtionalData, { merge: true });
+            await setDoc(docRef, additionalData, { merge: true });
         } catch (err) {
             successful = false;
             console.error("Error writing to the database:", err);
