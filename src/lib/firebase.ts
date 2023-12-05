@@ -36,7 +36,7 @@ export function prepareFirebase() {
 }
 
 //* please select the appropriate mode before running the application
-const usingEmulators = false;
+const usingEmulators = true;
 if (usingEmulators) {
     connectAuthEmulator(auth, "http://127.0.0.1:9099");
     connectFirestoreEmulator(db, "127.0.0.1", 8080);
