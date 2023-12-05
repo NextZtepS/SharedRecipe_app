@@ -1,11 +1,11 @@
 import { writable, type Writable, type Unsubscriber } from "svelte/store";
 
 type possibleState = "idle" | "processing";
-interface stateStore {
-    subscribe: (arg: any) => Unsubscriber,
-    nowIdle: () => void,
-    nowProcessing: () => void,
-    set: (state: possibleState) => void
+type state  = {
+    subscribe: (arg: any) => Unsubscriber;
+    nowIdle: () => void;
+    nowProcessing: () => void;
+    set: (state: possibleState) => void;
 }
 
 function stateStore() {
@@ -19,4 +19,4 @@ function stateStore() {
     };
 }
 
-export const state: stateStore = stateStore();
+export const state: state = stateStore();
