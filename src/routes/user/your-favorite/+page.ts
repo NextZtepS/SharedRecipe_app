@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 import { auth, db } from '$lib/firebase';
-import type { menu } from '$lib/interfaces/menu';
+import type { menu } from '$lib/types/menu';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 export const load = (async () => {
@@ -9,7 +9,7 @@ export const load = (async () => {
         where("visibility", "==", "public"),
         where("favoritedBy", "array-contains", auth.currentUser?.uid)
     );
-    
+
     let querySnapshot;
     try {
         console.log("Successfully reading user's favorite menus from the database!");

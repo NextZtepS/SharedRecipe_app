@@ -1,8 +1,8 @@
 import type { PageLoad } from './$types';
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '$lib/firebase';
-import type { user } from '$lib/interfaces/user';
-import type { menu } from '$lib/interfaces/menu';
+import type { user } from '$lib/types/user';
+import type { menu } from '$lib/types/menu';
 
 export const load = (async ({ params }) => {
     const uid = params.uid;

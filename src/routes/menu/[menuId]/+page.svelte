@@ -1,7 +1,7 @@
 <script lang="ts">
     import CardMenu from "$lib/components/cards/CardMenu.svelte";
     import { db } from "$lib/firebase";
-    import type { menu } from "$lib/interfaces/menu";
+    import type { menu } from "$lib/types/menu";
     import { user } from "$lib/stores/user";
     import { state } from "$lib/stores/state";
     import { doc, getDoc } from "firebase/firestore";

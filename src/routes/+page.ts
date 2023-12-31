@@ -1,7 +1,7 @@
 import type { PageLoad } from './$types';
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { db } from '$lib/firebase';
-import type { menu } from '$lib/interfaces/menu';
+import type { menu } from '$lib/types/menu';
 
 export const load = (async () => {
     const menusQuery = query(
