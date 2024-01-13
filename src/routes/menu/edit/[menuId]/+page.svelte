@@ -106,7 +106,7 @@
 
                 <div class="form-control mb-4">
                     <!-- svelte-ignore a11y-label-has-associated-control -->
-                    <label class="label font-semibold">Ingrediant</label>
+                    <label class="label font-semibold">Ingredient</label>
 
                     <!-- svelte-ignore a11y-label-has-associated-control -->
                     <div class="px-2 mb-2">

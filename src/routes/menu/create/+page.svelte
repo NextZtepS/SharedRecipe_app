@@ -17,7 +17,7 @@
     let tagString: string = "";
     let about: string = "";
     let ingredients: { [key: number]: string } = {};
-    let precedures: { [key: number]: string } = {};
+    let procedures: { [key: number]: string } = {};
     let references: string = "";
     let visibility: "public" | "private" = "public";
 </script>
@@ -150,7 +150,7 @@
                         <textarea
                             class="textarea textarea-bordered h-20 ml-4"
                             placeholder="How to cook your menu"
-                            bind:value={precedures[index + 1]}
+                            bind:value={procedures[index + 1]}
                         />
                     {/each}
                 </div>
@@ -192,7 +192,7 @@
                                 tagString,
                                 about,
                                 ingredients,
-                                precedures,
+                                procedures,
                                 references,
                                 visibility
                             );

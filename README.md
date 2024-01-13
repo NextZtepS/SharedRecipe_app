@@ -14,7 +14,7 @@ The key features on this application include:
 - improved database security (access-control and data validation via cloud function)
 - new processing state indicator for more declarative UI experience
 - fly-in and fade-out transition between pages
-- more instantaneous reative UI experience (remove unnecessary full-page reload on multiple site actions)
+- more instantaneous reactive UI experience (remove unnecessary full-page reload on multiple site actions)
 
 ### Upcoming release (1.0.4)
 - sort options (date, views, rating, ...) for menu search

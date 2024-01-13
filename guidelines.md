@@ -1,19 +1,11 @@
 # Guidelines for contributing to SharedRecipe
 
-## Mischevious Action
-
-The infrastructure of this application is tied to the account belonged to Natdanai (Next) Ongarjvaja, "NextZtepS."  
-With that being said, any deleterious action caused by mistake or any other means shall be prone to a direct lost of benifit of the owner.  
-Anyone who intentionally causes deleterious action will be held responsible. Other minor mistakes with no negative intention shall be considered case by case.  
-
 ## Missions of SharedRecipe
-
 - SharedRecipe development team promises to serve a safe and accessible web application experience to every user.
 - SharedRecipe welcomes anyone who wants to share their passion in food and cooking with the others.
 - SharedRecipe does not accept discriminated content of any form, for example: hatred, racism, etc.
 
 ## Development Team
-
 - The development team is an open-minded community which emphasizes on freedom of ideas and collaboration.
 - Every member of the development team is responsible to support one another in a positive manner.
 
@@ -33,3 +25,8 @@ Anyone who intentionally causes deleterious action will be held responsible. Oth
 - https://firebase.google.com/docs
 - https://tailwindcss.com/docs/
 - https://daisyui.com/docs/use/
+
+## Mischievous Action
+The infrastructure of this application is tied to the account belonged to Natdanai (Next) Ongarjvaja, "NextZtepS."  
+With that being said, any deleterious action caused by mistake or any other means shall be prone to a direct lost of benefit of the owner.  
+Anyone who intentionally causes deleterious action will be held responsible. Other minor mistakes with no negative intention shall be considered case by case.  

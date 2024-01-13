@@ -12,7 +12,7 @@
         where,
     } from "firebase/firestore";
     import { db } from "$lib/firebase";
-    import type { menu } from "$lib/interfaces/menu";
+    import type { menu } from "$lib/types/menu";
     import { state } from "$lib/stores/state";
     import { searchText } from "$lib/stores/searchText";
     import { fade, fly } from "svelte/transition";

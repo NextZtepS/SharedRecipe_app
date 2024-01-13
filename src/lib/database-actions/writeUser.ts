@@ -6,7 +6,7 @@ export async function writeUser(user: User) {
     const docPath = doc(db, `users/${user.uid}`);
     const docData = {
         uid: user.uid,
-        name: user.displayName ?? "annonymous",
+        name: user.displayName ?? "anonymous",
         email: user.email,
         photoURL: user.photoURL ?? "",
         latestSignIn: serverTimestamp(),

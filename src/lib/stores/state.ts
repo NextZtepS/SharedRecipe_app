@@ -1,7 +1,7 @@
 import { writable, type Writable, type Unsubscriber } from "svelte/store";
 
 type possibleState = "idle" | "processing";
-type state  = {
+type stateStore = {
     subscribe: (arg: any) => Unsubscriber;
     nowIdle: () => void;
     nowProcessing: () => void;
