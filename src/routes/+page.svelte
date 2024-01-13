@@ -14,6 +14,7 @@
     import { db } from "$lib/firebase";
     import type { menu } from "$lib/types/menu";
     import { state } from "$lib/stores/state";
+    import { searchText } from "$lib/stores/searchText";
     import { fade, fly } from "svelte/transition";
     import type { PageData } from "./$types";
 
@@ -27,13 +28,13 @@
             where("visibility", "==", "public"),
             orderBy("latestEdited", "desc"),
             startAfter(lastDoc),
-            limit(12)
+            limit(12),
         );
 
         let querySnapshot;
         try {
             console.log(
-                "Successfully reading more homepage menus from the database!"
+                "Successfully reading more homepage menus from the database!",
             );
             querySnapshot = await getDocs(menusQuery);
         } catch (err) {
@@ -46,7 +47,6 @@
         lastDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
     }
 
-    let searchKey: string;
     let searched: boolean = false;
     let searchedMenus: menu[] = [];
     let lastSearchDoc: QueryDocumentSnapshot | undefined;
@@ -54,23 +54,53 @@
     async function handleSearch() {
         searched = true;
         searchedMenus = [];
-        if (!searchKey) searchKey = "";
         const menusQuery = query(
             collection(db, "menus"),
             where("visibility", "==", "public"),
             where(
                 "keywords",
                 "array-contains",
-                searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
+                $searchText.replace(/[^a-zA-Z0-9]/g, "").toLowerCase(),
             ),
             orderBy("latestEdited", "desc"),
-            limit(24)
+            limit(24),
         );
 
         let querySnapshot;
         try {
             console.log(
-                "Successfully reading searched menus from the database!"
+                "Successfully reading searched menus from the database!",
+            );
+            querySnapshot = await getDocs(menusQuery);
+        } catch (err) {
+            console.error("Error reading from the database:", err);
+        }
+
+        querySnapshot?.forEach((doc) => {
+            searchedMenus = [...searchedMenus, doc.data() as menu];
+        });
+        lastSearchDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
+    }
+
+    async function loadMoreSearchedMenu() {
+        if (!lastSearchDoc) return;
+        const menusQuery = query(
+            collection(db, "menus"),
+            where("visibility", "==", "public"),
+            where(
+                "keywords",
+                "array-contains",
+                $searchText.replace(/[^a-zA-Z0-9]/g, "").toLowerCase(),
+            ),
+            orderBy("latestEdited", "desc"),
+            startAfter(lastDoc),
+            limit(12),
+        );
+
+        let querySnapshot;
+        try {
+            console.log(
+                "Successfully reading more searched menus from the database!",
             );
             querySnapshot = await getDocs(menusQuery);
         } catch (err) {
@@ -93,38 +123,6 @@
             }
         }
     }
-
-    async function loadMoreSearchedMenu() {
-        if (!lastSearchDoc) return;
-        if (!searchKey) searchKey = "";
-        const menusQuery = query(
-            collection(db, "menus"),
-            where("visibility", "==", "public"),
-            where(
-                "keywords",
-                "array-contains",
-                searchKey.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
-            ),
-            orderBy("latestEdited", "desc"),
-            startAfter(lastDoc),
-            limit(12)
-        );
-
-        let querySnapshot;
-        try {
-            console.log(
-                "Successfully reading more searched menus from the database!"
-            );
-            querySnapshot = await getDocs(menusQuery);
-        } catch (err) {
-            console.error("Error reading from the database:", err);
-        }
-
-        querySnapshot?.forEach((doc) => {
-            searchedMenus = [...searchedMenus, doc.data() as menu];
-        });
-        lastSearchDoc = querySnapshot?.docs[querySnapshot?.docs.length - 1];
-    }
 </script>
 
 <main in:fly={{ y: 50, duration: 400, delay: 500 }} out:fade>
@@ -136,7 +134,7 @@
                 type="text"
                 placeholder="Menu / User / Tag"
                 class="input input-bordered w-44 sm:w-auto flex-grow"
-                bind:value={searchKey}
+                bind:value={$searchText}
                 on:keydown={handleKeypress}
             />
             <button
